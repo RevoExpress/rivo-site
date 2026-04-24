@@ -49,7 +49,6 @@
             object-fit: contain;
         }
 
-        /* Menu navigation */
         .nav-links {
             display: flex;
             gap: 20px;
@@ -136,7 +135,7 @@
             border-radius: 2px;
         }
 
-        /* ========== CARDS SERVICES ========== */
+        /* ========== CARDS ========== */
         .cards {
             display: flex;
             flex-wrap: wrap;
@@ -252,7 +251,7 @@
             transform: translateY(-3px);
         }
 
-        /* ========== POURQUOI NOUS CHOISIR ========== */
+        /* ========== WHY ========== */
         .why-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -397,7 +396,7 @@
             font-size: 0.85rem;
         }
 
-        /* ========== BOUTON RETOUR HAUT ========== */
+        /* ========== BOUTON TOP ========== */
         .btn-top {
             position: fixed;
             bottom: 20px;
@@ -429,7 +428,7 @@
             transform: scale(1.1);
         }
 
-        /* ========== RESPONSIVE MOBILE ========== */
+        /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
             .container {
                 padding: 0 16px;
@@ -448,10 +447,6 @@
                 gap: 30px;
             }
 
-            .nav-links a {
-                font-size: 0.85rem;
-            }
-
             .hero {
                 padding: 2rem 0;
             }
@@ -462,7 +457,6 @@
 
             .hero p {
                 font-size: 0.9rem;
-                padding: 0 10px;
             }
 
             .btn-commande {
@@ -483,47 +477,11 @@
                 gap: 12px;
             }
 
-            .card {
-                padding: 1.3rem;
-            }
-
-            .livreur-card img {
-                height: 190px;
-            }
-
-            .formulaire {
-                padding: 1.5rem;
-            }
-
-            .btn-submit {
-                padding: 12px 20px;
-            }
-
-            .about-box {
-                padding: 1.5rem;
-            }
-
             .map-container iframe {
                 height: 250px;
             }
         }
 
-        /* ========== TABLETTE ========== */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .container {
-                padding: 0 30px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .section h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* ========== GRAND ECRAN PC ========== */
         @media (min-width: 1200px) {
             .container {
                 padding: 0 40px;
@@ -547,7 +505,6 @@
 
             .section h2 {
                 font-size: 2rem;
-                margin-bottom: 2.5rem;
             }
         }
     </style>
@@ -663,44 +620,49 @@
         </div>
     </div>
 
-    <!-- FORMULAIRE DE COMMANDE -->
+    <!-- FORMULAIRE DE COMMANDE AVEC TON NOUVEAU FORMSPREE -->
     <div id="commande" class="formulaire">
         <h2>📋 Commande de livraison</h2>
         <p style="text-align: center; margin-bottom: 1.5rem; font-size: 0.9rem;">Remplissez ce formulaire, un livreur arrive dans les 2h ⏱️</p>
-        <form action="https://formspree.io/f/mjkvzpdp" method="POST">
+        
+        <!-- ✅ ACTION CORRIGÉE AVEC TON HASHID -->
+        <form action="https://formspree.io/f/xnjlgenw" method="POST">
+            <input type="hidden" name="_subject" value="📦 NOUVELLE COMMANDE REVO EXPRESS">
+            <input type="hidden" name="_replyto" value="exp_email">
+            
             <h3 style="color:#f39c12; margin-bottom: 1rem;">👤 Expéditeur</h3>
             <div class="row-2cols">
-                <div class="form-group"><label>Nom *</label><input type="text" name="exp_nom" required></div>
-                <div class="form-group"><label>Prénom *</label><input type="text" name="exp_prenom" required></div>
+                <div class="form-group"><label>Nom *</label><input type="text" name="Expéditeur - Nom" required></div>
+                <div class="form-group"><label>Prénom *</label><input type="text" name="Expéditeur - Prénom" required></div>
             </div>
             <div class="row-2cols">
-                <div class="form-group"><label>Téléphone *</label><input type="tel" name="exp_tel" required></div>
-                <div class="form-group"><label>Email *</label><input type="email" name="exp_email" required></div>
+                <div class="form-group"><label>Téléphone *</label><input type="tel" name="Expéditeur - Téléphone" required></div>
+                <div class="form-group"><label>Email *</label><input type="email" name="Expéditeur - Email" required></div>
             </div>
-            <div class="form-group"><label>Adresse complète (expéditeur) *</label><textarea name="exp_adresse" rows="2" required></textarea></div>
+            <div class="form-group"><label>Adresse complète (expéditeur) *</label><textarea name="Expéditeur - Adresse" rows="2" required></textarea></div>
 
             <h3 style="color:#f39c12; margin: 1.5rem 0 1rem;">🎁 Destinataire</h3>
             <div class="row-2cols">
-                <div class="form-group"><label>Nom *</label><input type="text" name="dest_nom" required></div>
-                <div class="form-group"><label>Prénom *</label><input type="text" name="dest_prenom" required></div>
+                <div class="form-group"><label>Nom *</label><input type="text" name="Destinataire - Nom" required></div>
+                <div class="form-group"><label>Prénom *</label><input type="text" name="Destinataire - Prénom" required></div>
             </div>
             <div class="row-2cols">
-                <div class="form-group"><label>Téléphone *</label><input type="tel" name="dest_tel" required></div>
-                <div class="form-group"><label>Email *</label><input type="email" name="dest_email" required></div>
+                <div class="form-group"><label>Téléphone *</label><input type="tel" name="Destinataire - Téléphone" required></div>
+                <div class="form-group"><label>Email *</label><input type="email" name="Destinataire - Email" required></div>
             </div>
-            <div class="form-group"><label>Adresse de livraison *</label><textarea name="dest_adresse" rows="2" required></textarea></div>
+            <div class="form-group"><label>Adresse de livraison *</label><textarea name="Destinataire - Adresse de livraison" rows="2" required></textarea></div>
 
             <h3 style="color:#f39c12; margin: 1.5rem 0 1rem;">📦 Détails du colis</h3>
-            <div class="form-group"><label>Contenu du colis *</label><input type="text" name="contenu" required></div>
+            <div class="form-group"><label>Contenu du colis *</label><input type="text" name="Colis - Contenu" required></div>
             <div class="row-2cols">
-                <div class="form-group"><label>Poids (kg)</label><input type="text" name="poids" placeholder="Ex: 2.5"></div>
-                <div class="form-group"><label>Dimensions (cm)</label><input type="text" name="dimensions" placeholder="Ex: 30x20x10"></div>
+                <div class="form-group"><label>Poids (kg)</label><input type="text" name="Colis - Poids" placeholder="Ex: 2.5"></div>
+                <div class="form-group"><label>Dimensions (cm)</label><input type="text" name="Colis - Dimensions" placeholder="Ex: 30x20x10"></div>
             </div>
-            <div class="form-group"><label>Valeur du colis (DZD) *</label><input type="number" name="valeur" required></div>
+            <div class="form-group"><label>Valeur du colis (DZD) *</label><input type="number" name="Colis - Valeur" required></div>
 
             <div class="form-group">
                 <label>💵 Mode de paiement</label>
-                <select name="paiement">
+                <select name="Mode de paiement">
                     <option value="COD">COD (Cash à la livraison)</option>
                 </select>
             </div>
