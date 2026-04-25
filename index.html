@@ -18,14 +18,15 @@
             line-height: 1.6;
         }
 
+        /* HEADER RÉDUIT - PLUS DE PADDING ÉNORME */
         .header {
             background: linear-gradient(135deg, #2980b9, #1a5276);
             color: white;
-            padding: 1.5rem 0;
+            padding: 0.5rem 0;  /* Réduit ! */
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .container {
@@ -40,29 +41,31 @@
             align-items: center;
         }
 
-        /* LOGO GÉANT - 4 FOIS PLUS GRAND */
+        /* LOGO GÉANT - CENTRÉ */
         .logo-img {
-            max-width: 400px;
+            max-width: 350px;
             width: 100%;
             height: auto;
             background: transparent;
-            filter: drop-shadow(2px 4px 10px rgba(0,0,0,0.2));
+            display: block;
+            margin: 0 auto;
         }
 
+        /* Hero section - inchangée */
         .hero {
             background: linear-gradient(135deg, #f39c12, #e67e22);
             color: white;
-            padding: 3rem 0;
+            padding: 2rem 0;
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto;
         }
@@ -71,12 +74,12 @@
             display: inline-block;
             background: #2980b9;
             color: white;
-            padding: 14px 35px;
-            font-size: 1.2rem;
+            padding: 12px 30px;
+            font-size: 1.1rem;
             font-weight: bold;
             border-radius: 50px;
             text-decoration: none;
-            margin-top: 1.5rem;
+            margin-top: 1.2rem;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             border: none;
@@ -89,33 +92,33 @@
         }
 
         .section {
-            padding: 2.5rem 0;
+            padding: 2rem 0;
             border-bottom: 1px solid #ddd;
         }
 
         .section h2 {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             color: #2980b9;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
 
         .cards {
             display: flex;
             flex-wrap: wrap;
-            gap: 25px;
+            gap: 20px;
             justify-content: center;
         }
 
         .card {
             background: white;
-            padding: 1.8rem;
+            padding: 1.5rem;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            flex: 1 1 280px;
+            flex: 1 1 250px;
             text-align: center;
             transition: transform 0.3s;
-            border-top: 5px solid #f39c12;
+            border-top: 4px solid #f39c12;
         }
 
         .card:hover {
@@ -124,14 +127,13 @@
 
         .card h3 {
             color: #2980b9;
-            margin-bottom: 12px;
-            font-size: 1.4rem;
+            margin-bottom: 10px;
         }
 
         .livreurs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-top: 20px;
         }
 
@@ -150,35 +152,33 @@
 
         .livreur-card img {
             width: 100%;
-            height: 260px;
+            height: 250px;
             object-fit: cover;
         }
 
         .livreur-card h3 {
             color: #f39c12;
-            margin: 15px 0 8px;
-            font-size: 1.3rem;
+            margin: 12px 0 5px;
         }
 
         .livreur-card p {
-            padding: 0 15px 20px;
+            padding: 0 15px 15px;
             color: #555;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
         }
 
         .service-item {
             background: white;
-            padding: 1.2rem;
+            padding: 1rem;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             text-align: center;
             border-left: 4px solid #f39c12;
-            font-size: 1.1rem;
         }
 
         .map-container {
@@ -215,7 +215,7 @@
 
         input, textarea, select {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 1rem;
@@ -235,7 +235,7 @@
             background: #f39c12;
             color: #1a1a2e;
             border: none;
-            padding: 14px 25px;
+            padding: 12px 25px;
             font-size: 1.1rem;
             border-radius: 50px;
             cursor: pointer;
@@ -253,34 +253,35 @@
             background: #1a5276;
             color: white;
             text-align: center;
-            padding: 2rem 0;
+            padding: 1.5rem 0;
             margin-top: 2rem;
         }
 
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
             .row-2cols {
                 grid-template-columns: 1fr;
             }
             .logo-img {
-                max-width: 280px;
+                max-width: 250px;
             }
         }
     </style>
 </head>
 <body>
 
+<!-- HEADER RÉDUIT - Juste le logo, rien d'autre -->
 <header class="header">
     <div class="container">
         <div class="logo-container">
-            <!-- LOGO GÉANT - Charge "logo.png" -->
-            <img src="logo.png" alt="REVO EXPRESS Logo" class="logo-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 500 120%27%3E%3Crect width=%27500%27 height=%27120%27 fill=%27%232980b9%27/%3E%3Ctext x=%2720%27 y=%2770%27 font-family=%27Arial, sans-serif%27 font-size=%2740%27 font-weight=%27bold%27 fill=%27%23ffffff%27%3EREVO%3C/text%3E%3Ctext x=%27180%27 y=%2770%27 font-family=%27Arial, sans-serif%27 font-size=%2740%27 font-weight=%27bold%27 fill=%27%23f39c12%27%3EEXPRESS%3C/text%3E%3C/svg%3E'">
+            <img src="logo.png" alt="REVO EXPRESS" class="logo-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 100%27%3E%3Crect width=%27400%27 height=%27100%27 fill=%27%232980b9%27/%3E%3Ctext x=%2730%27 y=%2760%27 font-family=%27Arial, sans-serif%27 font-size=%2735%27 font-weight=%27bold%27 fill=%27%23ffffff%27%3EREVO%3C/text%3E%3Ctext x=%27150%27 y=%2760%27 font-family=%27Arial, sans-serif%27 font-size=%2735%27 font-weight=%27bold%27 fill=%27%23f39c12%27%3EEXPRESS%3C/text%3E%3C/svg%3E'">
         </div>
     </div>
 </header>
 
+<!-- Le reste du site est identique -->
 <section class="hero">
     <div class="container">
         <h1>📦 Livraison Rapide, Partout à Alger</h1>
@@ -312,17 +313,17 @@
         <h2>👨‍✈️ Nos Livreurs Professionnels</h2>
         <div class="livreurs-grid">
             <div class="livreur-card">
-                <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=500&h=300&fit=crop" alt="Livreur REVO EXPRESS">
+                <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&h=250&fit=crop" alt="Livreur REVO EXPRESS">
                 <h3>Équipe REVO</h3>
                 <p>Livraison rapide et sécurisée</p>
             </div>
             <div class="livreur-card">
-                <img src="https://images.unsplash.com/photo-1587293852726-70cdb0c6b8a4?w=500&h=300&fit=crop" alt="Livreur scooter">
+                <img src="https://images.unsplash.com/photo-1587293852726-70cdb0c6b8a4?w=400&h=250&fit=crop" alt="Livreur scooter">
                 <h3>Flotte Mobile</h3>
                 <p>Intervention < 2h partout à Alger</p>
             </div>
             <div class="livreur-card">
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&h=300&fit=crop" alt="Préparation commande">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=250&fit=crop" alt="Préparation commande">
                 <h3>Service Client</h3>
                 <p>À votre écoute 24h/24</p>
             </div>
@@ -360,7 +361,7 @@
 
     <div class="section">
         <h2>🇩🇿 Qui sommes-nous ?</h2>
-        <div style="background: white; padding: 1.8rem; border-radius: 15px; text-align: center; border-top: 5px solid #f39c12;">
+        <div style="background: white; padding: 1.5rem; border-radius: 15px; text-align: center; border-top: 4px solid #f39c12;">
             <p><strong>REVO EXPRESS</strong> est une <strong>entreprise de jeunes algériens passionnés</strong> avec <strong>plus de 20 ans d'expérience</strong> dans la logistique et la livraison express. Notre objectif : vous offrir un service <strong>same day delivery</strong> sur Alger en <strong>moins de 2 heures</strong>.</p>
         </div>
     </div>
