@@ -18,15 +18,14 @@
             line-height: 1.6;
         }
 
-        /* HEADER RÉDUIT - PLUS DE PADDING ÉNORME */
+        /* HEADER - AUCUN PADDING, HAUTEUR = TON LOGO */
         .header {
             background: linear-gradient(135deg, #2980b9, #1a5276);
             color: white;
-            padding: 0.5rem 0;  /* Réduit ! */
+            padding: 0;  /* PLUS AUCUN PADDING */
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .container {
@@ -39,19 +38,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            line-height: 0;  /* Supprime les espaces autour de l'image */
         }
 
-        /* LOGO GÉANT - CENTRÉ */
+        /* LOGO - TAILLE RÉELLE, SANS MODIFICATION */
         .logo-img {
-            max-width: 350px;
-            width: 100%;
+            width: auto;
             height: auto;
-            background: transparent;
+            max-width: 100%;
             display: block;
-            margin: 0 auto;
+            background: transparent;
         }
 
-        /* Hero section - inchangée */
+        /* Hero section */
         .hero {
             background: linear-gradient(135deg, #f39c12, #e67e22);
             color: white;
@@ -264,15 +263,12 @@
             .row-2cols {
                 grid-template-columns: 1fr;
             }
-            .logo-img {
-                max-width: 250px;
-            }
         }
     </style>
 </head>
 <body>
 
-<!-- HEADER RÉDUIT - Juste le logo, rien d'autre -->
+<!-- HEADER - AUCUN PADDING, HAUTEUR = TON LOGO EXACTEMENT -->
 <header class="header">
     <div class="container">
         <div class="logo-container">
@@ -281,7 +277,6 @@
     </div>
 </header>
 
-<!-- Le reste du site est identique -->
 <section class="hero">
     <div class="container">
         <h1>📦 Livraison Rapide, Partout à Alger</h1>
