@@ -1,9 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REVO EXPRESS – Livraison Alger</title>
+
     <style>
         * {
             margin: 0;
@@ -16,20 +18,20 @@
             background: #f5f5f5;
         }
 
-        /* Bandeau bleu : AUCUNE marge intérieure */
+        /* HEADER corrigé */
         .header {
             background: linear-gradient(135deg, #2980b9, #1a5276);
             text-align: center;
-            line-height: 0;
+            padding: 20px 0;
         }
 
-        /* Logo : taille naturelle, pas de fond, pas de forçage */
         .logo-img {
             width: auto;
-            height: auto;
-            max-width: 100%;
-            background: transparent;
+            height: 180px;
+            max-width: 90%;
             display: inline-block;
+            background: transparent;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25));
         }
 
         .hero {
@@ -77,14 +79,18 @@
             margin-bottom: 1.5rem;
         }
 
-        .cards, .livreurs-grid, .services-grid {
+        .cards,
+        .livreurs-grid,
+        .services-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 1.5rem;
             justify-content: center;
         }
 
-        .card, .livreur-card, .service-item {
+        .card,
+        .livreur-card,
+        .service-item {
             background: white;
             padding: 1.5rem;
             border-radius: 15px;
@@ -126,7 +132,9 @@
             color: #2980b9;
         }
 
-        input, textarea, select {
+        input,
+        textarea,
+        select {
             width: 100%;
             padding: 10px;
             border-radius: 8px;
@@ -160,48 +168,90 @@
             .row-2cols {
                 grid-template-columns: 1fr;
             }
+
+            .logo-img {
+                height: 120px;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- Bandeau bleu : exactement la hauteur du logo -->
 <header class="header">
     <img src="logo.png" alt="REVO EXPRESS" class="logo-img">
 </header>
 
 <section class="hero">
     <h1>📦 Livraison Rapide, Partout à Alger</h1>
-    <p>Faites-vous livrer n'importe où à Alger en quelques clics. Service fiable et ultra-rapide.</p>
-    <a href="#commande" class="btn-commande">🚀 COMMANDER UN LIVREUR</a>
+    <p>
+        Faites-vous livrer n'importe où à Alger en quelques clics.
+        Service fiable et ultra-rapide.
+    </p>
+    <a href="#commande" class="btn-commande">
+        🚀 COMMANDER UN LIVREUR
+    </a>
 </section>
 
 <div class="container">
+
     <div class="section">
-        <h2>⭐ Nos Services Express</h2>
+        <h2> Nos Services Express</h2>
+
         <div class="cards">
-            <div class="card"><h3>🚴 Livraison Partout à Alger</h3><p>Couverture totale Alger. Livraison -2h.</p></div>
-            <div class="card"><h3>⏱️ Rapide & Fiable</h3><p>24/7, livraison sécurisée.</p></div>
-            <div class="card"><h3>📍 Suivi en Temps Réel</h3><p>Suivez votre colis en direct.</p></div>
+            <div class="card">
+                <h3>🚴 Livraison Partout à Alger</h3>
+                <p>Couverture totale Alger. Livraison -2h.</p>
+            </div>
+
+            <div class="card">
+                <h3>⏱️ Rapide & Fiable</h3>
+                <p>24/7, livraison sécurisée.</p>
+            </div>
+
+            <div class="card">
+                <h3>📍 Suivi en Temps Réel</h3>
+                <p>Suivez votre colis en direct.</p>
+            </div>
         </div>
     </div>
 
     <div class="section">
         <h2>👨‍✈️ Nos Livreurs</h2>
+
         <div class="livreurs-grid">
-            <div class="livreur-card"><img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&h=250&fit=crop" alt="Livreur"><h3>Équipe REVO</h3></div>
-            <div class="livreur-card"><img src="https://images.unsplash.com/photo-1587293852726-70cdb0c6b8a4?w=400&h=250&fit=crop" alt="Scooter"><h3>Flotte Mobile</h3></div>
-            <div class="livreur-card"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=250&fit=crop" alt="Service"><h3>Support Client</h3></div>
+
+            <div class="livreur-card">
+                <img src="livreur1.jpg" alt="Livreur REVO">
+                <h3>Équipe REVO</h3>
+            </div>
+
+            <div class="livreur-card">
+                <img src="livreur2.jpg" alt="Flotte Mobile">
+                <h3>Flotte Mobile</h3>
+            </div>
+
+            <div class="livreur-card">
+                <img src="livreur3.jpg" alt="Support Client">
+                <h3>Support Client</h3>
+            </div>
+
         </div>
     </div>
 
     <div class="section">
         <h2>🗺️ Zone de livraison : Alger</h2>
-        <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102142.92334052074!2d2.9876294!3d36.7537658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb3d95edc5b31%3A0x7f3c4b9b5e5e5e5e!2sAlger%2C%20Alg%C3%A9rie!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr" allowfullscreen></iframe></div>
+
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102142.92334052074!2d2.9876294!3d36.7537658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb3d95edc5b31%3A0x7f3c4b9b5e5e5e5e!2sAlger%2C%20Alg%C3%A9rie!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
 
     <div class="section">
         <h2>📄 Services Administratifs</h2>
+
         <div class="services-grid">
             <div class="service-item">💡 Paiement électricité</div>
             <div class="service-item">🏢 B2B Solutions</div>
@@ -213,58 +263,143 @@
 
     <div class="section">
         <h2>✅ Pourquoi REVO EXPRESS ?</h2>
+
         <div class="cards">
-            <div class="card"><h3>📅 7j/7</h3><p>Même jours fériés</p></div>
-            <div class="card"><h3>💰 Prix accessibles</h3><p>Sans surprise</p></div>
-            <div class="card"><h3>🔒 Sécurisé</h3><p>Colis protégés</p></div>
-            <div class="card"><h3>📞 Support client</h3><p>Réactif</p></div>
+            <div class="card">
+                <h3>📅 7j/7</h3>
+                <p>Même jours fériés</p>
+            </div>
+
+            <div class="card">
+                <h3>💰 Prix accessibles</h3>
+                <p>Sans surprise</p>
+            </div>
+
+            <div class="card">
+                <h3>🔒 Sécurisé</h3>
+                <p>Colis protégés</p>
+            </div>
+
+            <div class="card">
+                <h3>📞 Support client</h3>
+                <p>Réactif</p>
+            </div>
         </div>
     </div>
 
     <div class="section">
         <h2>🇩🇿 Qui sommes-nous ?</h2>
+
         <div style="background:white; padding:1.5rem; border-radius:15px; text-align:center">
-            <p><strong>REVO EXPRESS</strong> : jeunes Algériens, +20 ans d’expérience, livraison <strong>same day à Alger en moins de 2h</strong>.</p>
+            <p>
+                <strong>REVO EXPRESS</strong> :
+                jeunes Algériens, +20 ans d’expérience,
+                livraison <strong>same day à Alger en moins de 2h</strong>.
+            </p>
         </div>
     </div>
 
     <div id="commande" class="formulaire">
         <h2>📋 Commande de livraison</h2>
+
         <form action="https://formspree.io/f/mjkvzpdp" method="POST">
+
             <h3>👤 Expéditeur</h3>
+
             <div class="row-2cols">
-                <div class="form-group"><label>Nom</label><input name="exp_nom" required></div>
-                <div class="form-group"><label>Prénom</label><input name="exp_prenom" required></div>
-                <div class="form-group"><label>Téléphone</label><input name="exp_tel" required></div>
-                <div class="form-group"><label>Email</label><input name="exp_email" required></div>
+                <div class="form-group">
+                    <label>Nom</label>
+                    <input name="exp_nom" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Prénom</label>
+                    <input name="exp_prenom" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Téléphone</label>
+                    <input name="exp_tel" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input name="exp_email" required>
+                </div>
             </div>
-            <div class="form-group"><label>Adresse expéditeur</label><textarea name="exp_adresse" rows="2" required></textarea></div>
+
+            <div class="form-group">
+                <label>Adresse expéditeur</label>
+                <textarea name="exp_adresse" rows="2" required></textarea>
+            </div>
 
             <h3>🎁 Destinataire</h3>
+
             <div class="row-2cols">
-                <div class="form-group"><label>Nom</label><input name="dest_nom" required></div>
-                <div class="form-group"><label>Prénom</label><input name="dest_prenom" required></div>
-                <div class="form-group"><label>Téléphone</label><input name="dest_tel" required></div>
-                <div class="form-group"><label>Email</label><input name="dest_email" required></div>
+                <div class="form-group">
+                    <label>Nom</label>
+                    <input name="dest_nom" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Prénom</label>
+                    <input name="dest_prenom" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Téléphone</label>
+                    <input name="dest_tel" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input name="dest_email" required>
+                </div>
             </div>
-            <div class="form-group"><label>Adresse livraison</label><textarea name="dest_adresse" rows="2" required></textarea></div>
+
+            <div class="form-group">
+                <label>Adresse livraison</label>
+                <textarea name="dest_adresse" rows="2" required></textarea>
+            </div>
 
             <h3>📦 Colis</h3>
-            <div class="form-group"><label>Contenu</label><input name="contenu" required></div>
-            <div class="row-2cols">
-                <div class="form-group"><label>Poids (kg)</label><input name="poids"></div>
-                <div class="form-group"><label>Dimensions (cm)</label><input name="dimensions"></div>
+
+            <div class="form-group">
+                <label>Contenu</label>
+                <input name="contenu" required>
             </div>
-            <div class="form-group"><label>Valeur (DZD)</label><input name="valeur" required></div>
+
+            <div class="row-2cols">
+                <div class="form-group">
+                    <label>Poids (kg)</label>
+                    <input name="poids">
+                </div>
+
+                <div class="form-group">
+                    <label>Dimensions (cm)</label>
+                    <input name="dimensions">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Valeur (DZD)</label>
+                <input name="valeur" required>
+            </div>
 
             <div class="form-group">
                 <label>Paiement</label>
-                <select name="paiement"><option>COD (Cash à la livraison)</option></select>
+                <select name="paiement">
+                    <option>COD (Cash à la livraison)</option>
+                </select>
             </div>
 
-            <button class="btn-submit">✅ Commander – Livraison < 2h</button>
+            <button class="btn-submit">
+                ✅ Commander – Livraison &lt; 2h
+            </button>
+
         </form>
     </div>
+
 </div>
 
 <footer class="footer">
@@ -274,3 +409,4 @@
 
 </body>
 </html>
+```
