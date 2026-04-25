@@ -3,359 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REVO EXPRESS – Coursier professionnel Alger</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>REVO EXPRESS – Livraison rapide à Alger</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-            line-height: 1.5;
+        body{
+            font-family:'Inter',sans-serif;
+            background:#ffffff;
+            color:#0f172a;
+            line-height:1.6;
         }
 
-        .header {
-            background: #0f2b3d;
-            text-align: center;
-            padding: 12px 0;
-            border-bottom: 2px solid #f39c12;
+        /* NAV */
+        .nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 8%;
+            background:#0f2b3d;
+            color:white;
         }
 
-        .logo-img {
-            height: 70px;
-            width: auto;
-            background: transparent;
+        .nav a{
+            color:#cbd5e1;
+            margin-left:20px;
+            text-decoration:none;
+            font-weight:500;
         }
 
-        .hero {
-            background: linear-gradient(135deg, #1e3a5f, #0f2b3d);
-            text-align: center;
-            padding: 3rem 1rem;
-            color: white;
+        .nav a:hover{
+            color:#f39c12;
         }
 
-        .hero h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
+        /* HERO */
+        .hero{
+            height:85vh;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            padding:0 20px;
+            background:linear-gradient(135deg,#1e3a5f,#0f2b3d);
+            color:white;
         }
 
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.9;
+        .hero h1{
+            font-size:3rem;
+            font-weight:700;
+            letter-spacing:-1px;
         }
 
-        .btn-commande {
-            display: inline-block;
-            background: #f39c12;
-            color: #0f2b3d;
-            padding: 12px 32px;
-            margin-top: 1.5rem;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: 0.2s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        .hero p{
+            margin-top:15px;
+            font-size:1.2rem;
+            max-width:700px;
+            opacity:0.9;
         }
 
-        .btn-commande:hover {
-            background: #e67e22;
-            transform: translateY(-2px);
+        .btn{
+            margin-top:30px;
+            padding:14px 32px;
+            border-radius:50px;
+            background:#f39c12;
+            color:#0f2b3d;
+            text-decoration:none;
+            font-weight:700;
+            transition:0.3s;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 2rem 1rem;
+        .btn:hover{
+            background:#e67e22;
+            transform:translateY(-3px);
         }
 
-        .section {
-            margin-bottom: 3rem;
+        /* SECTIONS */
+        .section{
+            padding:100px 8%;
         }
 
-        .section h2 {
-            text-align: center;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #1e3a5f;
-            margin-bottom: 2rem;
-            position: relative;
+        .section h2{
+            font-size:2rem;
+            text-align:center;
+            margin-bottom:60px;
+            letter-spacing:-1px;
         }
 
-        .section h2:after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: #f39c12;
-            margin: 10px auto 0;
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:25px;
         }
 
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
+        .card{
+            background:white;
+            border:1px solid #e2e8f0;
+            border-radius:20px;
+            padding:30px;
+            transition:0.3s;
         }
 
-        .stat {
-            text-align: center;
-            flex: 1;
-            min-width: 120px;
+        .card:hover{
+            transform:translateY(-8px);
+            box-shadow:0 20px 40px rgba(0,0,0,0.08);
         }
 
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #f39c12;
+        .card h3{
+            margin-bottom:10px;
+            color:#1e3a5f;
         }
 
-        .services-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
+        .card p{
+            color:#475569;
         }
 
-        .service-btn {
-            background: #1e3a5f;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.2s;
+        /* SERVICES BUTTONS */
+        .services{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:15px;
+            margin-bottom:60px;
         }
 
-        .service-btn:hover {
-            background: #f39c12;
-            color: #0f2b3d;
+        .service-btn{
+            padding:10px 20px;
+            border-radius:40px;
+            background:#1e3a5f;
+            color:white;
+            text-decoration:none;
+            font-weight:500;
+            transition:0.3s;
         }
 
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
+        .service-btn:hover{
+            background:#f39c12;
+            color:#0f2b3d;
         }
 
-        .card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            flex: 1 1 260px;
-            text-align: center;
-            transition: 0.2s;
-            border-bottom: 3px solid #f39c12;
+        /* ABOUT */
+        .about{
+            background:#f8fafc;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        /* FOOTER */
+        .footer{
+            background:#0f2b3d;
+            color:#cbd5e1;
+            text-align:center;
+            padding:40px 20px;
         }
 
-        .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #1e3a5f;
+        .footer a{
+            color:#f39c12;
+            text-decoration:none;
         }
 
-        .testimonials {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
+        /* WHATSAPP */
+        .whatsapp{
+            position:fixed;
+            bottom:20px;
+            right:20px;
+            background:#25D366;
+            color:white;
+            padding:14px 18px;
+            border-radius:50px;
+            font-weight:700;
+            text-decoration:none;
         }
 
-        .testimonial {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 16px;
-            flex: 1 1 280px;
-            font-style: italic;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        .client-name {
-            font-weight: 600;
-            margin-top: 1rem;
-            color: #f39c12;
-        }
-
-        .livreurs-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-        }
-
-        .livreur-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            flex: 1 1 280px;
-            text-align: center;
-        }
-
-        .livreur-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .livreur-card h3 {
-            margin: 1rem 0 0.5rem;
-            color: #1e3a5f;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 380px;
-            border-radius: 20px;
-            border: 0;
-        }
-
-        .footer {
-            background: #0f2b3d;
-            color: #cbd5e1;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 2rem;
-        }
-
-        .footer a {
-            color: #f39c12;
-            text-decoration: none;
-        }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            border-radius: 50px;
-            padding: 12px 20px;
-            font-weight: bold;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            z-index: 100;
-        }
-
-        @media (max-width: 700px) {
-            .hero h1 {
-                font-size: 1.6rem;
-            }
-            .logo-img {
-                height: 55px;
-            }
+        @media(max-width:768px){
+            .hero h1{font-size:2.2rem;}
         }
     </style>
 </head>
 <body>
 
-<header class="header">
-    <img src="logo.png" alt="REVO EXPRESS" class="logo-img">
-</header>
+<!-- NAV -->
+<div class="nav">
+    <div><strong>REVO EXPRESS</strong></div>
+    <div>
+        <a href="#services">Services</a>
+        <a href="#about">À propos</a>
+        <a href="#contact">Contact</a>
+    </div>
+</div>
 
+<!-- HERO -->
 <section class="hero">
-    <h1>Livraison express à Alger – Moins de 2h</h1>
-    <p>Professionnel, fiable, 24h/24. Documents, colis, repas, médicaments, urgences.</p>
-    <a href="formulaire.html" class="btn-commande">COMMANDER UN LIVREUR</a>
+    <h1>Livraison rapide à Alger</h1>
+    <p>Documents, colis, repas et urgences livrés en moins de 2h avec des livreurs moto professionnels.</p>
+    <a href="formulaire.html" class="btn">Commander maintenant</a>
 </section>
 
-<div class="container">
-    <div class="stats">
-        <div class="stat"><div class="stat-number">+20 ans</div><div>d’expérience</div></div>
-        <div class="stat"><div class="stat-number">-2h</div><div>livraison garantie</div></div>
-        <div class="stat"><div class="stat-number">24/7</div><div>disponible</div></div>
-        <div class="stat"><div class="stat-number">1000+</div><div>clients satisfaits</div></div>
-    </div>
-
-    <div class="services-buttons">
-        <a href="formulaire.html" class="service-btn">B2B – Documents</a>
-        <a href="formulaire.html" class="service-btn">B2C – Produits</a>
+<!-- SERVICES BUTTONS -->
+<div class="section">
+    <div class="services">
+        <a href="formulaire.html" class="service-btn">B2B Documents</a>
+        <a href="formulaire.html" class="service-btn">B2C Produits</a>
         <a href="formulaire.html" class="service-btn">Repas & Médicaments</a>
         <a href="formulaire.html" class="service-btn">Courses personnelles</a>
         <a href="formulaire.html" class="service-btn">Urgence Flash</a>
     </div>
-
-    <div class="section">
-        <h2>Nos services</h2>
-        <div class="cards">
-            <div class="card"><h3>B2B – Documents</h3><p>Soumissions, contrats, dossiers administratifs.</p></div>
-            <div class="card"><h3>B2C – Colis</h3><p>E-commerce, commerces, particuliers.</p></div>
-            <div class="card"><h3>Médicaments & Repas</h3><p>Livraison sanitaire et alimentaire.</p></div>
-            <div class="card"><h3>Urgence Flash</h3><p>Moto rapide comme l’éclair.</p></div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Ils nous font confiance</h2>
-        <div class="cards">
-            <div class="card">🏢 Cabinet d’avocats</div>
-            <div class="card">🏥 Pharmacies Alger</div>
-            <div class="card">📦 E-commerçants</div>
-            <div class="card">🏪 Commerces de proximité</div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Ce que disent nos clients</h2>
-        <div class="testimonials">
-            <div class="testimonial">“Livraison en 1h30, livreur très pro. Je recommande.”<div class="client-name">– Karim, Hydra</div></div>
-            <div class="testimonial">“REVO EXPRESS sauve mon cabinet quotidiennement. Merci !”<div class="client-name">– Meriem, Avocate</div></div>
-            <div class="testimonial">“Enfin un service fiable à Alger. Prix corrects.”<div class="client-name">– Ahmed, Bab Ezzouar</div></div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Nos livreurs moto – Rapides comme l’éclair</h2>
-        <div class="livreurs-grid">
-            <div class="livreur-card"><img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&h=250&fit=crop" alt="Livreur"><h3>Équipe Flash</h3><p>Réactifs, proches de vous</p></div>
-            <div class="livreur-card"><img src="https://images.unsplash.com/photo-1587293852726-70cdb0c6b8a4?w=400&h=250&fit=crop" alt="Moto"><h3>Flotte mobile</h3><p>Livraison -2h partout Alger</p></div>
-            <div class="livreur-card"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=250&fit=crop" alt="Urgent"><h3>Urgence express</h3><p>Dossier oublié ? On s’en occupe</p></div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Zone de livraison</h2>
-        <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102142.92334052074!2d2.9876294!3d36.7537658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb3d95edc5b31%3A0x7f3c4b9b5e5e5e5e!2sAlger%2C%20Alg%C3%A9rie!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr" allowfullscreen></iframe></div>
-        <p style="text-align:center; margin-top:1rem;">Alger Centre, Hydra, Bab Ezzouar, Kouba, El Harrach, Draria, Cheraga et toute la banlieue.</p>
-    </div>
-
-    <div class="section">
-        <h2>Pourquoi REVO EXPRESS ?</h2>
-        <div class="cards">
-            <div class="card"><h3>Garantie satisfait</h3><p>Ou remboursé</p></div>
-            <div class="card"><h3>Prix fixes</h3><p>Sans surprise</p></div>
-            <div class="card"><h3>Assurance colis</h3><p>Sécurité totale</p></div>
-            <div class="card"><h3>Support 24/7</h3><p>Réponse rapide</p></div>
-        </div>
-    </div>
 </div>
 
-<a href="https://wa.me/213XXXXXXXXX" class="whatsapp-float">📱 WhatsApp</a>
+<!-- SERVICES -->
+<section id="services" class="section">
+    <h2>Nos services</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>B2B – Documents</h3>
+            <p>Transport sécurisé de contrats, dossiers et documents professionnels.</p>
+        </div>
+        <div class="card">
+            <h3>B2C – Colis</h3>
+            <p>Livraison rapide pour e-commerce et particuliers.</p>
+        </div>
+        <div class="card">
+            <h3>Repas & Médicaments</h3>
+            <p>Livraison urgente d’aliments et produits de santé.</p>
+        </div>
+        <div class="card">
+            <h3>Courses personnelles</h3>
+            <p>Nous effectuons vos courses quotidiennes à votre place.</p>
+        </div>
+    </div>
+</section>
 
-<footer class="footer">
-    <p><strong>REVO EXPRESS</strong> – Coursier professionnel Alger</p>
-    <p>📞 +213 XX XXX XXX | ✉️ d.yahiaoui2022@gmail.com</p>
-    <p><a href="#">Mentions légales</a> | <a href="#">FAQ</a> | <a href="formulaire.html">Commander</a></p>
+<!-- ABOUT -->
+<section id="about" class="section about">
+    <h2>À propos de REVO EXPRESS</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Notre mission</h3>
+            <p>Offrir une solution de livraison rapide, fiable et flexible à Alger pour tous vos besoins professionnels et personnels.</p>
+        </div>
+        <div class="card">
+            <h3>Notre histoire</h3>
+            <p>REVO EXPRESS est né pour moderniser la livraison à Alger avec des solutions simples et efficaces adaptées au marché local.</p>
+        </div>
+        <div class="card">
+            <h3>Notre vision</h3>
+            <p>Devenir la référence du coursier digital à Alger avec un service rapide et sécurisé.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact" class="footer">
+    <p><strong>REVO EXPRESS</strong> – Livraison rapide à Alger</p>
+    <p>📞 +213 XX XX XX XX | ✉️ contact@revoexpress.dz</p>
+    <p><a href="#">Mentions légales</a></p>
 </footer>
+
+<!-- WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/213XXXXXXXXX">WhatsApp</a>
 
 </body>
 </html>
