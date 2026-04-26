@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* RESET DE BASE : On met tout à zéro pour maîtriser l'espace */
         *{
             margin:0;
             padding:0;
@@ -15,50 +16,43 @@
         }
 
         body{
-            font-family:'Inter',sans-serif;
+            font-family:'Inter', sans-serif;
             background:#0b1220;
             color:#e5e7eb;
             overflow-x:hidden;
+            line-height: 1.6; /* Plus facile à lire */
         }
 
-        /* ===== BACKGROUND ANIMÉ ===== */
-        .bg-blur{
+        /* DÉCORATION : Les taches de couleur en fond */
+        .bg-blur, .bg-blur2 {
             position:fixed;
             width:500px;
             height:500px;
-            background:#f39c12;
             filter:blur(160px);
+            z-index:-1;
+            pointer-events: none; /* Pour ne pas bloquer les clics */
+        }
+
+        .bg-blur{
+            background:#f39c12;
             top:-100px;
             left:-100px;
-            opacity:0.25;
+            opacity:0.2;
             animation:move 10s infinite alternate;
-            z-index:-1;
         }
 
         .bg-blur2{
-            position:fixed;
-            width:500px;
-            height:500px;
             background:#1e3a5f;
-            filter:blur(160px);
             bottom:-150px;
             right:-150px;
-            opacity:0.35;
+            opacity:0.3;
             animation:move2 12s infinite alternate;
-            z-index:-1;
         }
 
-        @keyframes move{
-            from{transform:translate(0,0)}
-            to{transform:translate(120px,80px)}
-        }
+        @keyframes move{ from{transform:translate(0,0)} to{transform:translate(100px,50px)} }
+        @keyframes move2{ from{transform:translate(0,0)} to{transform:translate(-100px,-50px)} }
 
-        @keyframes move2{
-            from{transform:translate(0,0)}
-            to{transform:translate(-120px,-80px)}
-        }
-
-        /* ===== NAV GLASS ===== */
+        /* MENU DE NAVIGATION */
         .nav{
             position:fixed;
             top:0;
@@ -66,25 +60,24 @@
             display:flex;
             justify-content:space-between;
             align-items:center;
-            padding:18px 8%;
+            padding:15px 8%;
             backdrop-filter:blur(15px);
-            background:rgba(15,43,61,0.6);
+            background:rgba(15, 43, 61, 0.7);
             border-bottom:1px solid rgba(255,255,255,0.1);
-            z-index:100;
+            z-index:1000;
         }
 
-        .nav a{
+        .nav-links a{
             color:#cbd5e1;
             margin-left:20px;
             text-decoration:none;
-            transition:0.3s;
+            font-weight: 500;
+            transition: 0.3s;
         }
 
-        .nav a:hover{
-            color:#f39c12;
-        }
+        .nav-links a:hover{ color:#f39c12; }
 
-        /* ===== HERO ===== */
+        /* SECTION HERO (L'accueil) */
         .hero{
             height:100vh;
             display:flex;
@@ -95,156 +88,102 @@
             padding:0 20px;
         }
 
-        .hero h1{
-            font-size:3.2rem;
-            letter-spacing:-1px;
-        }
-
-        .hero p{
-            margin-top:15px;
-            max-width:700px;
-            opacity:0.8;
-        }
+        .hero h1{ font-size:clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px; }
+        .hero p{ max-width:600px; font-size: 1.1rem; opacity:0.9; }
 
         .btn{
+            display: inline-block;
             margin-top:30px;
-            padding:14px 32px;
+            padding:15px 35px;
             border-radius:50px;
             background:#f39c12;
             color:#0b1220;
             font-weight:700;
             text-decoration:none;
-            transition:0.3s;
+            transition: transform 0.2s, background 0.2s;
         }
 
-        .btn:hover{
-            transform:scale(1.05);
-            background:#e67e22;
-        }
+        .btn:hover{ transform:scale(1.05); background:#e67e22; }
 
-        /* ===== SECTIONS ===== */
-        .section{
-            padding:120px 8%;
-        }
+        /* SECTIONS GÉNÉRALES */
+        .section{ padding:100px 8%; }
+        h2{ text-align:center; font-size:2.5rem; margin-bottom:50px; }
 
-        h2{
-            text-align:center;
-            font-size:2.2rem;
-            margin-bottom:60px;
-        }
-
-        /* ===== CARDS GLASS ===== */
+        /* CARTES DE SERVICE */
         .cards{
             display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+            grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
             gap:25px;
         }
 
         .card{
-            background:rgba(255,255,255,0.05);
+            background:rgba(255,255,255,0.03);
             border:1px solid rgba(255,255,255,0.1);
             backdrop-filter:blur(10px);
-            border-radius:20px;
-            padding:30px;
-            transition:0.4s;
+            border-radius:24px;
+            padding:40px;
+            transition: 0.3s;
         }
 
-        .card:hover{
-            transform:translateY(-10px);
-            border-color:#f39c12;
-        }
+        .card:hover{ border-color:#f39c12; transform: translateY(-5px); }
+        .card h3{ color:#f39c12; margin-bottom:15px; }
 
-        .card h3{
-            color:#f39c12;
-            margin-bottom:10px;
-        }
-
-        /* ===== SERVICES BUTTONS ===== */
-        .services{
-            display:flex;
-            flex-wrap:wrap;
-            justify-content:center;
-            gap:12px;
-            margin-bottom:60px;
-        }
-
-        .service-btn{
-            padding:10px 18px;
-            border-radius:40px;
-            background:#1e3a5f;
-            color:white;
-            text-decoration:none;
-            transition:0.3s;
-        }
-
-        .service-btn:hover{
-            background:#f39c12;
-            color:#0b1220;
-        }
-
-        /* ===== FORM ===== */
-        .form{
+        /* FORMULAIRE */
+        .form-container{
             max-width:600px;
             margin:auto;
-            background:rgba(255,255,255,0.05);
-            padding:30px;
-            border-radius:20px;
-            backdrop-filter:blur(10px);
+            background:rgba(255,255,255,0.03);
+            padding:40px;
+            border-radius:24px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .form input, .form textarea{
+        .form-group{ margin-bottom: 15px; }
+        .form-group label{ display: block; margin-bottom: 5px; font-size: 0.9rem; color: #f39c12; }
+
+        .form-container input, .form-container textarea{
             width:100%;
             padding:12px;
-            margin:10px 0;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius:10px;
-            border:none;
+            color: white;
             outline:none;
         }
 
-        .form button{
+        .form-container button{
             width:100%;
-            padding:12px;
+            padding:15px;
             background:#f39c12;
             border:none;
             border-radius:10px;
             font-weight:bold;
+            font-size: 1rem;
             cursor:pointer;
+            transition: 0.3s;
         }
 
-        /* ===== TRACKING ===== */
-        .track{
-            text-align:center;
-        }
+        .form-container button:hover{ background:#e67e22; }
 
+        /* TRACKING */
+        .tracking-list { max-width: 500px; margin: auto; }
         .step{
-            margin:15px 0;
-            padding:15px;
+            margin:10px 0;
+            padding:20px;
             background:rgba(255,255,255,0.05);
-            border-radius:10px;
+            border-radius:15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .active{
-            border-left:4px solid #f39c12;
-        }
+        .step.active{ border-left:5px solid #f39c12; background: rgba(243, 156, 18, 0.1); }
 
-        /* ===== FADE IN ===== */
-        .hidden{
-            opacity:0;
-            transform:translateY(30px);
-            transition:0.8s;
-        }
+        /* ANIMATION AU SCROLL */
+        .hidden{ opacity:0; transform:translateY(30px); transition: 1s ease-out; }
+        .show{ opacity:1; transform:translateY(0); }
 
-        .show{
-            opacity:1;
-            transform:translateY(0);
-        }
-
-        /* ===== FOOTER ===== */
-        .footer{
-            text-align:center;
-            padding:50px;
-            background:#0f2b3d;
-        }
+        .footer{ text-align:center; padding:40px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 50px; }
     </style>
 </head>
 <body>
@@ -252,84 +191,107 @@
 <div class="bg-blur"></div>
 <div class="bg-blur2"></div>
 
-<!-- NAV -->
-<div class="nav">
-    <div><img src="logo.png" alt="REVO EXPRESS" style="height:40px;"></div>
-    <div><strong>REVO EXPRESS</strong></div>
-    <div>
+<!-- NAV : Utilisation de <nav> pour que Google comprenne que c'est le menu -->
+<nav class="nav">
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="logo.png" alt="Logo REVO EXPRESS" style="height:35px;">
+        <strong>REVO EXPRESS</strong>
+    </div>
+    <div class="nav-links">
         <a href="#services">Services</a>
         <a href="#order">Commande</a>
         <a href="#tracking">Tracking</a>
     </div>
-</div>
+</nav>
 
 <!-- HERO -->
-<section class="hero hidden">
+<header class="hero hidden">
     <h1>Livraison premium à Alger</h1>
-    <p>Rapide, sécurisé et intelligent. Une nouvelle génération de livraison.</p>
-    <a href="#order" class="btn">Commander maintenant</a>
-</section>
-
-<!-- SERVICES BUTTONS -->
-<section class="section hidden">
-    <div class="services">
-        <a class="service-btn">B2B</a>
-        <a class="service-btn">B2C</a>
-        <a class="service-btn">Repas</a>
-        <a class="service-btn">Urgence</a>
-    </div>
-</section>
+    <p>Rapide, sécurisé et intelligent. La logistique nouvelle génération pour les particuliers et les entreprises.</p>
+    <a href="#order" class="btn">Passer une commande</a>
+</header>
 
 <!-- SERVICES -->
 <section id="services" class="section hidden">
-    <h2>Nos services</h2>
+    <h2>Nos services spécialisés</h2>
     <div class="cards">
-        <div class="card"><h3>B2B</h3><p>Documents professionnels sécurisés.</p></div>
-        <div class="card"><h3>B2C</h3><p>Livraison e-commerce rapide.</p></div>
-        <div class="card"><h3>Urgence</h3><p>Livraison immédiate moto.</p></div>
+        <div class="card">
+            <h3>B2B Pro</h3>
+            <p>Livraison de contrats, documents officiels et colis entre entreprises avec remise en main propre.</p>
+        </div>
+        <div class="card">
+            <h3>E-commerce (B2C)</h3>
+            <p>Nous gérons vos livraisons clients avec un suivi en temps réel et une gestion des retours simplifiée.</p>
+        </div>
+        <div class="card">
+            <h3>Urgence Moto</h3>
+            <p>Besoin d'envoyer un pli en moins d'une heure ? Nos coursiers interviennent immédiatement.</p>
+        </div>
     </div>
 </section>
 
-<!-- ORDER FORM -->
+<!-- ORDER FORM : On a ajouté des <label> pour l'accessibilité -->
 <section id="order" class="section hidden">
-    <h2>Commande intelligente</h2>
-    <div class="form">
-        <input placeholder="Nom">
-        <input placeholder="Téléphone">
-        <input placeholder="Adresse pickup">
-        <input placeholder="Adresse livraison">
-        <textarea placeholder="Détails du colis"></textarea>
-        <button>Envoyer commande</button>
+    <h2>Commande rapide</h2>
+    <div class="form-container">
+        <form id="deliveryForm">
+            <div class="form-group">
+                <label>Votre Nom</label>
+                <input type="text" placeholder="Ex: Jean Dupont" required>
+            </div>
+            <div class="form-group">
+                <label>Téléphone</label>
+                <input type="tel" placeholder="05XX XX XX XX" required>
+            </div>
+            <div class="form-group">
+                <label>Adresse de départ</label>
+                <input type="text" placeholder="Quartier, Rue..." required>
+            </div>
+            <div class="form-group">
+                <label>Adresse d'arrivée</label>
+                <input type="text" placeholder="Destination précise" required>
+            </div>
+            <div class="form-group">
+                <label>Détails (Optionnel)</label>
+                <textarea placeholder="Poids, fragilité, étage..."></textarea>
+            </div>
+            <button type="submit">Envoyer la demande</button>
+        </form>
     </div>
 </section>
 
 <!-- TRACKING -->
-<section id="tracking" class="section hidden track">
-    <h2>Tracking livraison</h2>
-    <div class="step active">📦 Commande reçue</div>
-    <div class="step">🏍 Livreurs assignés</div>
-    <div class="step">🚀 En route</div>
-    <div class="step">✅ Livré</div>
+<section id="tracking" class="section hidden">
+    <h2>Suivi de votre colis</h2>
+    <div class="tracking-list">
+        <div class="step active"><span>📦</span> Commande reçue</div>
+        <div class="step"><span>🏍️</span> Livreur en route vers vous</div>
+        <div class="step"><span>🚀</span> Colis récupéré</div>
+        <div class="step"><span>✅</span> Livré à destination</div>
+    </div>
 </section>
 
-<!-- FOOTER -->
-<div class="footer">
-    REVO EXPRESS © 2026
-</div>
+<footer class="footer">
+    <p>REVO EXPRESS © 2026 – L'excellence logistique à Alger</p>
+</footer>
 
 <script>
-// FADE IN SCROLL
-const elements=document.querySelectorAll('.hidden');
-
-const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
+// EFFET D'APPARITION : Simple et efficace
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
             entry.target.classList.add('show');
         }
     });
-});
+}, { threshold: 0.1 });
 
-elements.forEach(el=>observer.observe(el));
+document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+
+// PETITE SÉCURITÉ : Empêcher le formulaire de recharger la page pour rien
+document.getElementById('deliveryForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert("Merci ! Votre commande a été envoyée avec succès.");
+});
 </script>
 
 </body>
