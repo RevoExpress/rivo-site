@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REVO EXPRESS – Livraison premium Alger</title>
 
+    <!-- On récupère la police d'écriture Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* RESET DE BASE : On met tout à zéro pour maîtriser l'espace */
+        /* 1. LES RÉGLAGES DE BASE */
         *{
             margin:0;
             padding:0;
@@ -17,24 +18,24 @@
 
         body{
             font-family:'Inter', sans-serif;
-            background:#0b1220;
+            background:#0b1220; /* Bleu très foncé */
             color:#e5e7eb;
             overflow-x:hidden;
-            line-height: 1.6; /* Plus facile à lire */
+            line-height: 1.6;
         }
 
-        /* DÉCORATION : Les taches de couleur en fond */
+        /* 2. LES DÉCORS (Les boules de couleur qui bougent derrière) */
         .bg-blur, .bg-blur2 {
             position:fixed;
             width:500px;
             height:500px;
             filter:blur(160px);
             z-index:-1;
-            pointer-events: none; /* Pour ne pas bloquer les clics */
+            pointer-events: none; /* Pour que ça ne gêne pas les clics */
         }
 
         .bg-blur{
-            background:#f39c12;
+            background:#f39c12; /* Orange */
             top:-100px;
             left:-100px;
             opacity:0.2;
@@ -42,7 +43,7 @@
         }
 
         .bg-blur2{
-            background:#1e3a5f;
+            background:#1e3a5f; /* Bleu */
             bottom:-150px;
             right:-150px;
             opacity:0.3;
@@ -52,7 +53,7 @@
         @keyframes move{ from{transform:translate(0,0)} to{transform:translate(100px,50px)} }
         @keyframes move2{ from{transform:translate(0,0)} to{transform:translate(-100px,-50px)} }
 
-        /* MENU DE NAVIGATION */
+        /* 3. LE MENU DU HAUT */
         .nav{
             position:fixed;
             top:0;
@@ -77,7 +78,7 @@
 
         .nav-links a:hover{ color:#f39c12; }
 
-        /* SECTION HERO (L'accueil) */
+        /* 4. LE TEXTE D'ACCUEIL (Hero) */
         .hero{
             height:100vh;
             display:flex;
@@ -89,7 +90,7 @@
         }
 
         .hero h1{ font-size:clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px; }
-        .hero p{ max-width:600px; font-size: 1.1rem; opacity:0.9; }
+        .hero p{ max-width:600px; font-size: 1.1rem; opacity:0.8; }
 
         .btn{
             display: inline-block;
@@ -100,16 +101,16 @@
             color:#0b1220;
             font-weight:700;
             text-decoration:none;
-            transition: transform 0.2s, background 0.2s;
+            transition: 0.3s;
         }
 
         .btn:hover{ transform:scale(1.05); background:#e67e22; }
 
-        /* SECTIONS GÉNÉRALES */
+        /* 5. LES SECTIONS */
         .section{ padding:100px 8%; }
         h2{ text-align:center; font-size:2.5rem; margin-bottom:50px; }
 
-        /* CARTES DE SERVICE */
+        /* 6. LES CARTES DE SERVICE */
         .cards{
             display:grid;
             grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
@@ -128,7 +129,7 @@
         .card:hover{ border-color:#f39c12; transform: translateY(-5px); }
         .card h3{ color:#f39c12; margin-bottom:15px; }
 
-        /* FORMULAIRE */
+        /* 7. LE FORMULAIRE DE COMMANDE */
         .form-container{
             max-width:600px;
             margin:auto;
@@ -139,7 +140,7 @@
         }
 
         .form-group{ margin-bottom: 15px; }
-        .form-group label{ display: block; margin-bottom: 5px; font-size: 0.9rem; color: #f39c12; }
+        .form-group label{ display: block; margin-bottom: 5px; font-size: 0.8rem; color: #f39c12; text-transform: uppercase; }
 
         .form-container input, .form-container textarea{
             width:100%;
@@ -158,14 +159,25 @@
             border:none;
             border-radius:10px;
             font-weight:bold;
-            font-size: 1rem;
             cursor:pointer;
             transition: 0.3s;
         }
 
-        .form-container button:hover{ background:#e67e22; }
+        /* 8. LA CARTE (MAP) */
+        .map-wrapper {
+            width: 100%;
+            height: 400px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
 
-        /* TRACKING */
+        /* L'astuce pour mettre la carte en mode sombre */
+        .map-wrapper iframe {
+            filter: grayscale(1) invert(1) contrast(0.9) opacity(0.8);
+        }
+
+        /* 9. LE TRACKING (Les étapes) */
         .tracking-list { max-width: 500px; margin: auto; }
         .step{
             margin:10px 0;
@@ -176,10 +188,9 @@
             align-items: center;
             gap: 15px;
         }
-
         .step.active{ border-left:5px solid #f39c12; background: rgba(243, 156, 18, 0.1); }
 
-        /* ANIMATION AU SCROLL */
+        /* 10. ANIMATIONS D'APPARITION */
         .hidden{ opacity:0; transform:translateY(30px); transition: 1s ease-out; }
         .show{ opacity:1; transform:translateY(0); }
 
@@ -188,95 +199,110 @@
 </head>
 <body>
 
+<!-- ÉLÉMENTS DÉCO -->
 <div class="bg-blur"></div>
 <div class="bg-blur2"></div>
 
-<!-- NAV : Utilisation de <nav> pour que Google comprenne que c'est le menu -->
+<!-- BARRE DE NAVIGATION -->
 <nav class="nav">
     <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="logo.png" alt="Logo REVO EXPRESS" style="height:35px;">
+        <img src="logo.png" alt="REVO" style="height:35px;">
         <strong>REVO EXPRESS</strong>
     </div>
     <div class="nav-links">
         <a href="#services">Services</a>
         <a href="#order">Commande</a>
+        <a href="#zone">Zone Alger</a>
         <a href="#tracking">Tracking</a>
     </div>
 </nav>
 
-<!-- HERO -->
+<!-- ACCUEIL -->
 <header class="hero hidden">
     <h1>Livraison premium à Alger</h1>
-    <p>Rapide, sécurisé et intelligent. La logistique nouvelle génération pour les particuliers et les entreprises.</p>
+    <p>La nouvelle génération de logistique urbaine. Rapide, sécurisée et connectée.</p>
     <a href="#order" class="btn">Passer une commande</a>
 </header>
 
 <!-- SERVICES -->
 <section id="services" class="section hidden">
-    <h2>Nos services spécialisés</h2>
+    <h2>Nos Services</h2>
     <div class="cards">
         <div class="card">
             <h3>B2B Pro</h3>
-            <p>Livraison de contrats, documents officiels et colis entre entreprises avec remise en main propre.</p>
+            <p>Livraison de documents et colis entre entreprises avec une priorité absolue.</p>
         </div>
         <div class="card">
-            <h3>E-commerce (B2C)</h3>
-            <p>Nous gérons vos livraisons clients avec un suivi en temps réel et une gestion des retours simplifiée.</p>
+            <h3>E-commerce</h3>
+            <p>Nous livrons vos clients à domicile partout à Alger avec suivi en temps réel.</p>
         </div>
         <div class="card">
-            <h3>Urgence Moto</h3>
-            <p>Besoin d'envoyer un pli en moins d'une heure ? Nos coursiers interviennent immédiatement.</p>
+            <h3>Express Moto</h3>
+            <p>Pour vos urgences, nos coursiers moto évitent les bouchons d'Alger.</p>
         </div>
     </div>
 </section>
 
-<!-- ORDER FORM : On a ajouté des <label> pour l'accessibilité -->
+<!-- FORMULAIRE -->
 <section id="order" class="section hidden">
-    <h2>Commande rapide</h2>
+    <h2>Commander une course</h2>
     <div class="form-container">
         <form id="deliveryForm">
             <div class="form-group">
-                <label>Votre Nom</label>
-                <input type="text" placeholder="Ex: Jean Dupont" required>
+                <label>Nom complet</label>
+                <input type="text" placeholder="Votre nom" required>
             </div>
             <div class="form-group">
-                <label>Téléphone</label>
-                <input type="tel" placeholder="05XX XX XX XX" required>
+                <label>N° de Téléphone</label>
+                <input type="tel" placeholder="0550 00 00 00" required>
             </div>
             <div class="form-group">
-                <label>Adresse de départ</label>
-                <input type="text" placeholder="Quartier, Rue..." required>
+                <label>Adresse de ramassage</label>
+                <input type="text" placeholder="Où récupérons-nous le colis ?" required>
             </div>
             <div class="form-group">
-                <label>Adresse d'arrivée</label>
-                <input type="text" placeholder="Destination précise" required>
-            </div>
-            <div class="form-group">
-                <label>Détails (Optionnel)</label>
-                <textarea placeholder="Poids, fragilité, étage..."></textarea>
+                <label>Adresse de livraison</label>
+                <input type="text" placeholder="Où devons-nous livrer ?" required>
             </div>
             <button type="submit">Envoyer la demande</button>
         </form>
     </div>
 </section>
 
-<!-- TRACKING -->
-<section id="tracking" class="section hidden">
-    <h2>Suivi de votre colis</h2>
-    <div class="tracking-list">
-        <div class="step active"><span>📦</span> Commande reçue</div>
-        <div class="step"><span>🏍️</span> Livreur en route vers vous</div>
-        <div class="step"><span>🚀</span> Colis récupéré</div>
-        <div class="step"><span>✅</span> Livré à destination</div>
+<!-- LA CARTE D'ALGER -->
+<section id="zone" class="section hidden">
+    <h2>Notre zone d'intervention</h2>
+    <div class="map-wrapper">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102334.35418197964!2d3.0039268!3d36.7285153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb2179836471d%3A0x66f68e0d4c72ef21!2sAlger!5e0!3m2!1sfr!2sdz!4v1715800000000!5m2!1sfr!2sdz" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
     </div>
 </section>
 
+<!-- TRACKING -->
+<section id="tracking" class="section hidden">
+    <h2>Suivi de colis</h2>
+    <div class="tracking-list">
+        <div class="step active">📦 Commande validée</div>
+        <div class="step">🏍️ Coursier en route</div>
+        <div class="step">🚀 Livraison en cours</div>
+        <div class="step">✅ Colis livré</div>
+    </div>
+</section>
+
+<!-- PIED DE PAGE -->
 <footer class="footer">
-    <p>REVO EXPRESS © 2026 – L'excellence logistique à Alger</p>
+    <p>REVO EXPRESS © 2026 – Livraison intelligente à Alger</p>
 </footer>
 
 <script>
-// EFFET D'APPARITION : Simple et efficace
+// SCRIPT : Apparition au défilement
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -287,10 +313,10 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
 
-// PETITE SÉCURITÉ : Empêcher le formulaire de recharger la page pour rien
+// SCRIPT : Message quand on clique sur envoyer
 document.getElementById('deliveryForm').addEventListener('submit', (e) => {
     e.preventDefault();
-    alert("Merci ! Votre commande a été envoyée avec succès.");
+    alert("Commande bien reçue ! REVO EXPRESS vous contactera dans quelques minutes.");
 });
 </script>
 
