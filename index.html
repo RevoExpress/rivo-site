@@ -1,234 +1,219 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REVO EXPRESS – Premium Delivery Alger</title>
+    <title>REVO EXPRESS – Premium Delivery</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* VARIABLES : On définit les couleurs ici pour que le changement de mode soit facile */
         :root {
-            --bg: #0b1220;
-            --text: #f3f4f6;
-            --primary: #f39c12;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
-            --nav-bg: rgba(11, 18, 32, 0.8);
-            --map-filter: grayscale(1) invert(1) contrast(0.9);
-        }
-
-        .light-mode {
             --bg: #f9fafb;
             --text: #111827;
-            --glass: rgba(0, 0, 0, 0.05);
-            --border: rgba(0, 0, 0, 0.1);
-            --nav-bg: rgba(249, 250, 251, 0.8);
-            --map-filter: none;
+            --primary: #f39c12;
+            --glass: rgba(0, 0, 0, 0.03);
+            --border: rgba(0, 0, 0, 0.08);
+            --nav-bg: rgba(255, 255, 255, 0.9);
         }
 
-        * { margin:0; padding:0; box-sizing:border-box; transition: background 0.3s, color 0.3s; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-            line-height: 1.5;
+        body.dark-mode {
+            --bg: #0b1220;
+            --text: #f3f4f6;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --nav-bg: rgba(11, 18, 32, 0.9);
         }
 
-        /* DÉCORATIONS DE FOND */
-        .blur-circle {
-            position: fixed; width: 600px; height: 600px; border-radius: 50%;
-            background: var(--primary); filter: blur(150px); opacity: 0.1; z-index: -1;
-        }
+        [dir="rtl"] { font-family: 'Cairo', sans-serif; }
+        [dir="ltr"] { font-family: 'Inter', sans-serif; }
+
+        * { margin:0; padding:0; box-sizing:border-box; transition: all 0.3s ease; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); line-height: 1.6; }
 
         /* NAVIGATION */
         .nav {
             position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between;
             align-items: center; padding: 10px 5%; background: var(--nav-bg);
-            backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 1000;
+            backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000;
         }
 
-        .nav .logo-area { display: flex; align-items: center; gap: 15px; }
-        /* LOGO AGRANDI */
-        .nav img { height: 80px; width: auto; object-fit: contain; }
-        .nav strong { font-size: 1.5rem; letter-spacing: -1px; }
+        .logo-area { display: flex; align-items: center; }
+        .nav img { height: 70px; width: auto; } /* Logo bien visible */
 
-        .nav-right { display: flex; align-items: center; gap: 20px; }
-        .nav-links a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        .nav-right { display: flex; align-items: center; gap: 10px; }
         
-        #theme-btn {
-            background: var(--primary); border: none; padding: 8px 16px;
-            border-radius: 50px; cursor: pointer; font-weight: bold; color: #000;
+        .menu-btns { display: flex; gap: 8px; }
+        .menu-btns a { 
+            text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.8rem;
+            padding: 8px 15px; border-radius: 10px; border: 1px solid var(--border); background: var(--glass);
+        }
+        .menu-btns a:hover { border-color: var(--primary); color: var(--primary); }
+
+        .ctrl-btn {
+            background: var(--text); color: var(--bg); border: none; 
+            padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.75rem;
         }
 
-        /* HERO SECTION */
-        .hero { height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; }
-        .hero p { max-width: 600px; opacity: 0.8; font-size: 1.2rem; }
+        .section { padding: 80px 10% 40px; }
+        .hero { height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
 
-        /* SECTIONS */
-        .section { padding: 80px 10%; }
-        h2 { text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: var(--primary); }
+        .form-box { background: var(--glass); padding: 30px; border-radius: 20px; border: 1px solid var(--border); max-width: 800px; margin: auto; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align: left; }
+        [dir="rtl"] .form-grid { text-align: right; }
+        
+        .form-header { grid-column: span 2; color: var(--primary); font-weight: 800; border-bottom: 2px solid var(--primary); margin: 15px 0 5px; }
+        .field { display: flex; flex-direction: column; gap: 5px; }
+        .field label { font-size: 0.7rem; font-weight: 700; opacity: 0.6; }
+        input { padding: 12px; border-radius: 8px; border: 1px solid var(--border); outline: none; }
+        .full { grid-column: span 2; }
+        
+        .submit-btn { 
+            grid-column: span 2; background: var(--primary); border: none; padding: 15px; 
+            border-radius: 10px; font-weight: 800; cursor: pointer; margin-top: 20px; 
+        }
 
-        /* CARTE ALGER */
-        .map-container { width: 100%; height: 450px; border-radius: 30px; overflow: hidden; border: 2px solid var(--primary); margin-top: -50px; }
-        .map-container iframe { width: 100%; height: 100%; border: none; filter: var(--map-filter); }
-
-        /* SERVICES CARDS */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: var(--glass); padding: 30px; border-radius: 20px; border: 1px solid var(--border); }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .card { background: var(--glass); padding: 25px; border-radius: 20px; border: 1px solid var(--border); }
         .card h3 { color: var(--primary); margin-bottom: 10px; }
 
-        /* FORMULAIRE GÉANT */
-        .form-box { background: var(--glass); padding: 40px; border-radius: 30px; border: 1px solid var(--border); }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .form-header { grid-column: span 2; margin-top: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; color: var(--primary); font-weight: bold; }
-        
-        .field { display: flex; flex-direction: column; gap: 5px; }
-        .field label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; opacity: 0.7; }
-        input, textarea { padding: 12px; border-radius: 10px; border: 1px solid var(--border); background: rgba(0,0,0,0.1); color: var(--text); outline: none; }
-        input:focus { border-color: var(--primary); }
+        .step { background: var(--glass); padding: 15px; margin-bottom: 10px; border-radius: 12px; border: 1px solid var(--border); }
+        .step.active { border-left: 5px solid var(--primary); background: #fff; }
+        [dir="rtl"] .step.active { border-left: none; border-right: 5px solid var(--primary); }
 
-        .full { grid-column: span 2; }
-        .submit-btn { 
-            grid-column: span 2; background: var(--primary); color: #000; border: none; 
-            padding: 18px; border-radius: 15px; font-weight: 800; cursor: pointer; font-size: 1.1rem; margin-top: 20px;
-        }
-
-        /* TRACKING */
-        .tracking-list { max-width: 600px; margin: 0 auto; }
-        .step { display: flex; align-items: center; gap: 20px; background: var(--glass); padding: 20px; margin-bottom: 10px; border-radius: 15px; border-left: 5px solid var(--border); }
-        .step.active { border-left-color: var(--primary); background: rgba(243, 156, 18, 0.1); }
-
-        /* ANIMATION */
-        .hidden { opacity: 0; transform: translateY(30px); transition: 0.8s; }
-        .show { opacity: 1; transform: translateY(0); }
-
-        footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); margin-top: 40px; opacity: 0.6; }
-
-        @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 2.2rem; } }
+        @media (max-width: 700px) { .form-grid { grid-template-columns: 1fr; } .menu-btns { display: none; } }
     </style>
 </head>
-<body>
+<body id="body">
 
-<div class="blur-circle" style="top: -10%; left: -10%;"></div>
-<div class="blur-circle" style="bottom: -10%; right: -10%; background: #1e3a5f;"></div>
-
-<!-- NAVIGATION -->
-<nav class="nav">
-    <div class="logo-area">
-        <img src="logo.png" alt="REVO">
-        <strong>REVO EXPRESS</strong>
-    </div>
-    <div class="nav-right">
-        <div class="nav-links">
-            <a href="#services">Services</a>
-            <a href="#order">Order</a>
-            <a href="#tracking">Tracking</a>
+    <nav class="nav">
+        <div class="logo-area">
+            <img src="logo.png" alt="REVO EXPRESS Logo">
         </div>
-        <button id="theme-btn">Light Mode</button>
-    </div>
-</nav>
+        <div class="nav-right">
+            <div class="menu-btns">
+                <a href="#services" id="m-services">Services</a>
+                <a href="#order" id="m-order">Order</a>
+                <a href="#tracking" id="m-track">Tracking</a>
+            </div>
+            <button class="ctrl-btn" onclick="toggleLang()" id="lang-btn">AR</button>
+            <button class="ctrl-btn" onclick="toggleTheme()" id="theme-btn">Dark Mode</button>
+        </div>
+    </nav>
 
-<!-- HERO -->
-<header class="hero hidden">
-    <h1>Smart Logistics in Algiers</h1>
-    <p>Premium, fast, and secure delivery for businesses and individuals.</p>
-</header>
+    <header class="hero">
+        <h1 id="hero-title">Livraison Premium</h1>
+        <p id="hero-desc">La logistique intelligente à Alger.</p>
+    </header>
 
-<!-- MAP SECTION (Plus haut comme demandé) -->
-<section id="map" class="section hidden">
-    <h2>Our Service Area</h2>
-    <div class="map-container">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102334.35418197964!2d3.0039268!3d36.7285153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb2179836471d%3A0x66f68e0d4c72ef21!2sAlger!5e0!3m2!1sfr!2sdz!4v1715800000000!5m2!1sfr!2sdz">
-        </iframe>
-    </div>
-</section>
+    <section id="services" class="section">
+        <div class="grid-3">
+            <div class="card"><h3 id="s1-t">B2B</h3><p id="s1-d">Documents et colis pros.</p></div>
+            <div class="card"><h3 id="s2-t">E-commerce</h3><p id="s2-d">Livraison boutiques en ligne.</p></div>
+            <div class="card"><h3 id="s3-t">Urgent</h3><p id="s3-d">Coursiers moto express.</p></div>
+        </div>
+    </section>
 
-<!-- SERVICES -->
-<section id="services" class="section hidden">
-    <h2>Our Specialities</h2>
-    <div class="grid-3">
-        <div class="card"><h3>B2B</h3><p>Professional documents and secure courier services for companies.</p></div>
-        <div class="card"><h3>B2C / E-com</h3><p>Manage your online store deliveries with real-time tracking.</p></div>
-        <div class="card"><h3>Emergency</h3><p>Immediate motorcycle dispatch for your most urgent packages.</p></div>
-    </div>
-</section>
+    <section id="order" class="section">
+        <div class="form-box">
+            <form class="form-grid">
+                <div class="form-header" id="f-head-1">EXPÉDITEUR</div>
+                <div class="field"><label id="l-nom1">Nom</label><input type="text" placeholder="Nom"></div>
+                <div class="field"><label id="l-tel1">Téléphone</label><input type="tel" placeholder="05XXXXXXXX"></div>
+                <div class="field full"><label id="l-adr1">Adresse de ramassage</label><input type="text" placeholder="Adresse complète"></div>
 
-<!-- FORMULAIRE COMPLET -->
-<section id="order" class="section hidden">
-    <h2>Place a Delivery Order</h2>
-    <div class="form-box">
-        <form class="form-grid" id="mainForm">
-            <!-- SENDER -->
-            <div class="form-header">SENDER DETAILS (EXPÉDITEUR)</div>
-            <div class="field"><label>First Name</label><input type="text" placeholder="First Name" required></div>
-            <div class="field"><label>Last Name</label><input type="text" placeholder="Last Name" required></div>
-            <div class="field"><label>Phone Number</label><input type="tel" placeholder="05XXXXXXXX" required></div>
-            <div class="field"><label>Email Address</label><input type="email" placeholder="email@example.com"></div>
-            <div class="field full"><label>Pickup Address</label><input type="text" placeholder="Detailed Address in Algiers" required></div>
+                <div class="form-header" id="f-head-2">DESTINATAIRE</div>
+                <div class="field"><label id="l-nom2">Nom</label><input type="text" placeholder="Nom"></div>
+                <div class="field"><label id="l-tel2">Téléphone</label><input type="tel" placeholder="05XXXXXXXX"></div>
+                <div class="field full"><label id="l-adr2">Adresse de livraison</label><input type="text" placeholder="Adresse complète"></div>
 
-            <!-- RECIPIENT -->
-            <div class="form-header">RECIPIENT DETAILS (DESTINATAIRE)</div>
-            <div class="field"><label>First Name</label><input type="text" placeholder="First Name" required></div>
-            <div class="field"><label>Last Name</label><input type="text" placeholder="Last Name" required></div>
-            <div class="field"><label>Phone Number</label><input type="tel" placeholder="05XXXXXXXX" required></div>
-            <div class="field full"><label>Delivery Address</label><input type="text" placeholder="Exact Delivery Point" required></div>
+                <div class="form-header" id="f-head-3">PRODUIT</div>
+                <div class="field"><label id="l-poids">Poids</label><input type="text" placeholder="ex: 2kg"></div>
+                <div class="field"><label id="l-dim">Dimensions</label><input type="text" placeholder="ex: 20x20cm"></div>
 
-            <!-- PRODUCT -->
-            <div class="form-header">PRODUCT INFORMATION</div>
-            <div class="field"><label>Content</label><input type="text" placeholder="What's inside?" required></div>
-            <div class="field"><label>Weight (kg)</label><input type="text" placeholder="Approx. Weight"></div>
-            <div class="field full"><label>Dimensions</label><input type="text" placeholder="Ex: 20x30x10 cm"></div>
+                <button type="submit" class="submit-btn" id="btn-valider">VALIDER LA COMMANDE</button>
+            </form>
+        </div>
+    </section>
 
-            <button type="submit" class="submit-btn">CONFIRM ORDER</button>
-        </form>
-    </div>
-</section>
+    <section id="tracking" class="section">
+        <div style="max-width:500px; margin:auto;">
+            <div class="step active" id="t1">📦 Commande Reçue</div>
+            <div class="step" id="t2">🏍️ Livreur en route</div>
+            <div class="step" id="t3">✅ Livré</div>
+        </div>
+    </section>
 
-<!-- TRACKING -->
-<section id="tracking" class="section hidden">
-    <h2>Live Tracking Status</h2>
-    <div class="tracking-list">
-        <div class="step active"><span>📦</span> Order Received</div>
-        <div class="step"><span>🏍️</span> Courier Assigned</div>
-        <div class="step"><span>🚀</span> In Transit</div>
-        <div class="step"><span>✅</span> Successfully Delivered</div>
-    </div>
-</section>
+    <script>
+        const texts = {
+            fr: {
+                mSer: "Services", mOrd: "Order", mTra: "Tracking",
+                hT: "Livraison Premium", hD: "La logistique intelligente à Alger.",
+                s1t: "B2B", s1d: "Documents et colis pros.",
+                s2t: "E-commerce", s2d: "Livraison boutiques en ligne.",
+                s3t: "Urgent", s3d: "Coursiers moto express.",
+                fh1: "EXPÉDITEUR", fh2: "DESTINATAIRE", fh3: "PRODUIT",
+                lNom: "Nom", lTel: "Téléphone", lAdrA: "Adresse de ramassage", lAdrB: "Adresse de livraison",
+                lPoids: "Poids", lDim: "Dimensions", btnV: "VALIDER LA COMMANDE",
+                t1: "📦 Commande Reçue", t2: "🏍️ Livreur en route", t3: "✅ Livré",
+                langBtn: "AR"
+            },
+            ar: {
+                mSer: "خدماتنا", mOrd: "طلب", mTra: "تتبع",
+                hT: "توصيل بريميوم", hD: "الخدمات اللوجستية الذكية في الجزائر العاصمة.",
+                s1t: "شركات", s1d: "وثائق و طرود مهنية.",
+                s2t: "تجارة إلكترونية", s2d: "توصيل المتاجر عبر الإنترنت.",
+                s3t: "عاجل", s3d: "ساعي دراجة نارية سريع.",
+                fh1: "المرسل", fh2: "المرسل إليه", fh3: "المنتج",
+                lNom: "الاسم", lTel: "الهاتف", lAdrA: "عنوان الاستلام", lAdrB: "عنوان التوصيل",
+                lPoids: "الوزن", lDim: "الأبعاد", btnV: "تأكيد الطلب",
+                t1: "📦 تم استلام الطلب", t2: "🏍️ السائق في الطريق", t3: "✅ تم التوصيل",
+                langBtn: "FR"
+            }
+        };
 
-<footer>
-    REVO EXPRESS © 2026 – Premium Logistics Solutions
-</footer>
+        let currentLang = 'fr';
 
-<script>
-    // THEME TOGGLE (English Labels)
-    const btn = document.getElementById('theme-btn');
-    btn.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        if(document.body.classList.contains('light-mode')) {
-            btn.innerText = "Dark Mode";
-        } else {
-            btn.innerText = "Light Mode";
+        function toggleLang() {
+            currentLang = (currentLang === 'fr') ? 'ar' : 'fr';
+            const lang = texts[currentLang];
+            
+            document.documentElement.dir = (currentLang === 'ar') ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
+
+            document.getElementById('m-services').innerText = lang.mSer;
+            document.getElementById('m-order').innerText = lang.mOrd;
+            document.getElementById('m-track').innerText = lang.mTra;
+            document.getElementById('hero-title').innerText = lang.hT;
+            document.getElementById('hero-desc').innerText = lang.hD;
+            document.getElementById('s1-t').innerText = lang.s1t; document.getElementById('s1-d').innerText = lang.s1d;
+            document.getElementById('s2-t').innerText = lang.s2t; document.getElementById('s2-d').innerText = lang.s2d;
+            document.getElementById('s3-t').innerText = lang.s3t; document.getElementById('s3-d').innerText = lang.s3d;
+            document.getElementById('f-head-1').innerText = lang.fh1;
+            document.getElementById('f-head-2').innerText = lang.fh2;
+            document.getElementById('f-head-3').innerText = lang.fh3;
+            document.getElementById('l-nom1').innerText = lang.lNom; document.getElementById('l-nom2').innerText = lang.lNom;
+            document.getElementById('l-tel1').innerText = lang.lTel; document.getElementById('l-tel2').innerText = lang.lTel;
+            document.getElementById('l-adr1').innerText = lang.lAdrA; document.getElementById('l-adr2').innerText = lang.lAdrB;
+            document.getElementById('l-poids').innerText = lang.lPoids; document.getElementById('l-dim').innerText = lang.lDim;
+            document.getElementById('btn-valider').innerText = lang.btnV;
+            document.getElementById('t1').innerText = lang.t1;
+            document.getElementById('t2').innerText = lang.t2;
+            document.getElementById('t3').innerText = lang.t3;
+            document.getElementById('lang-btn').innerText = lang.langBtn;
         }
-    });
 
-    // FADE IN ON SCROLL
-    const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.hidden').forEach(h => obs.observe(h));
-
-    // FORM ALERT
-    document.getElementById('mainForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert("Success! Your order has been registered. Our team will call you shortly.");
-    });
-</script>
-
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.getElementById('theme-btn');
+            if(document.body.classList.contains('dark-mode')) {
+                btn.innerText = "Light Mode";
+            } else {
+                btn.innerText = "Dark Mode";
+            }
+        }
+    </script>
 </body>
 </html>
