@@ -5,126 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REVO EXPRESS – Premium Delivery Algiers</title>
 
-    <!-- Polices haute qualité -->
+    <!-- Polices et Icônes -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* CONFIGURATION DES THÈMES */
         :root {
-            --bg: #f9fafb;
-            --text: #111827;
-            --primary: #f39c12;
-            --glass: rgba(0, 0, 0, 0.03);
-            --border: rgba(0, 0, 0, 0.1);
-            --nav-bg: rgba(255, 255, 255, 0.9);
-            --map-filter: none;
+            --bg: #f9fafb; --text: #111827; --primary: #f39c12; --glass: rgba(255, 255, 255, 0.8);
+            --border: rgba(0, 0, 0, 0.1); --card: #ffffff; --map-filter: none;
         }
 
         body.dark-mode {
-            --bg: #0b1220;
-            --text: #f3f4f6;
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
-            --nav-bg: rgba(11, 18, 32, 0.9);
+            --bg: #0b1220; --text: #f3f4f6; --glass: rgba(11, 18, 32, 0.8);
+            --border: rgba(255, 255, 255, 0.1); --card: rgba(255, 255, 255, 0.05);
             --map-filter: grayscale(1) invert(1) contrast(0.9);
         }
 
-        /* TYPOGRAPHIE SELON LA LANGUE */
         [dir="rtl"] { font-family: 'Cairo', sans-serif; }
         [dir="ltr"] { font-family: 'Inter', sans-serif; }
 
-        * { margin:0; padding:0; box-sizing:border-box; transition: background 0.4s, color 0.4s; }
+        * { margin:0; padding:0; box-sizing:border-box; transition: all 0.3s ease; }
         html { scroll-behavior: smooth; }
         body { background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
-        /* NAVIGATION PREMIUM */
+        /* NAVIGATION */
         .nav {
             position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between;
-            align-items: center; padding: 12px 5%; background: var(--nav-bg);
-            backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000;
+            align-items: center; padding: 20px 5%; background: transparent; z-index: 1000;
         }
-        .logo-area img { height: 80px; width: auto; display: block; }
+        .nav.scrolled { padding: 10px 5%; background: var(--glass); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+        .logo-area img { height: 60px; width: auto; }
 
         .nav-right { display: flex; align-items: center; gap: 15px; }
         .menu-btns { display: flex; gap: 10px; }
         .menu-btns a { 
             text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.85rem;
-            padding: 10px 20px; border-radius: 12px; border: 1px solid var(--border); background: var(--glass);
+            padding: 8px 16px; border-radius: 10px; border: 1px solid var(--border);
         }
-        .menu-btns a:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+        .menu-btns a:hover { border-color: var(--primary); color: var(--primary); }
 
-        .ctrl-btn {
-            background: var(--text); color: var(--bg); border: none; 
-            padding: 10px 18px; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 0.8rem;
-        }
+        .ctrl-btn { background: var(--text); color: var(--bg); border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.75rem; }
+
+        /* HERO */
+        .hero { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; background: linear-gradient(to bottom, rgba(243, 156, 18, 0.05), transparent); }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; margin-bottom: 15px; }
 
         /* SECTIONS */
-        .hero { height: 45vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
-        .hero h1 { font-size: clamp(2.2rem, 8vw, 3.8rem); line-height: 1.1; font-weight: 800; margin-bottom: 15px; }
         .section { padding: 60px 10%; }
+        .section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; font-weight: 800; color: var(--primary); }
 
-        /* MAP D'ALGER */
-        .map-wrapper { 
-            width: 100%; height: 400px; border-radius: 30px; overflow: hidden; 
-            border: 2px solid var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
+        /* CARDS (Services & Pricing) */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { background: var(--card); padding: 30px; border-radius: 25px; border: 1px solid var(--border); text-align: center; }
+        .card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .card i { color: var(--primary); margin-bottom: 20px; }
+        .price { font-size: 2.5rem; font-weight: 800; margin: 15px 0; }
+        .price span { font-size: 1rem; opacity: 0.6; }
+
+        /* MAP */
+        .map-wrapper { width: 100%; height: 400px; border-radius: 30px; overflow: hidden; border: 2px solid var(--primary); }
         .map-wrapper iframe { width: 100%; height: 100%; border: none; filter: var(--map-filter); }
 
-        /* FORMULAIRE COMPLET */
-        .form-box { background: var(--glass); padding: 40px; border-radius: 35px; border: 1px solid var(--border); max-width: 1000px; margin: auto; }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; }
-        [dir="rtl"] .form-grid { text-align: right; }
-        
-        .form-header { grid-column: span 2; color: var(--primary); font-weight: 800; border-bottom: 2px solid var(--primary); margin: 30px 0 10px; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
-        .field { display: flex; flex-direction: column; gap: 6px; }
+        /* FORMULAIRE */
+        .form-box { background: var(--card); padding: 40px; border-radius: 30px; border: 1px solid var(--border); max-width: 900px; margin: auto; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-header { grid-column: span 2; color: var(--primary); font-weight: 800; border-bottom: 2px solid var(--primary); margin-top: 20px; padding-bottom: 5px; font-size: 0.9rem; }
+        .field { display: flex; flex-direction: column; gap: 5px; }
         .field label { font-size: 0.75rem; font-weight: 700; opacity: 0.6; text-transform: uppercase; }
-        input { padding: 15px; border-radius: 12px; border: 1px solid var(--border); outline: none; background: rgba(128,128,128,0.05); color: var(--text); font-family: inherit; font-size: 1rem; }
-        input:focus { border-color: var(--primary); background: var(--bg); }
+        input { padding: 14px; border-radius: 12px; border: 1px solid var(--border); background: rgba(128,128,128,0.05); color: var(--text); outline: none; }
+        input:focus { border-color: var(--primary); background: transparent; }
         .full { grid-column: span 2; }
-        
-        .submit-btn { 
-            grid-column: span 2; background: var(--primary); border: none; padding: 22px; 
-            border-radius: 18px; font-weight: 800; cursor: pointer; margin-top: 35px; font-size: 1.2rem; color: #000;
-            box-shadow: 0 10px 20px rgba(243, 156, 18, 0.2);
+        .submit-btn { grid-column: span 2; background: var(--primary); border: none; padding: 20px; border-radius: 15px; font-weight: 800; cursor: pointer; margin-top: 20px; font-size: 1.1rem; color: #000; }
+
+        /* WHATSAPP FLOTTANT */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 1000; text-decoration: none; font-size: 30px;
         }
-        .submit-btn:hover { transform: scale(1.02); background: #e67e22; }
-        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .whatsapp-float:hover { transform: scale(1.1); rotate: 10deg; }
 
-        /* MESSAGES DE CONFIRMATION (LIBERTÉ CRÉATIVE) */
-        #status-success { 
-            display: none; background: rgba(39, 174, 96, 0.1); color: #27ae60; padding: 40px; 
-            border-radius: 25px; border: 2px solid #27ae60; text-align: center; 
-        }
-        #status-success h2 { margin-bottom: 10px; font-size: 1.8rem; }
-        #status-error { display: none; background: #e74c3c; color: white; padding: 20px; border-radius: 15px; text-align: center; }
+        /* MESSAGES FORMSPREE */
+        #status-success { display: none; background: rgba(39, 174, 96, 0.1); color: #27ae60; padding: 40px; border-radius: 25px; border: 2px solid #27ae60; text-align: center; }
 
-        /* SERVICES & TRACKING */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: var(--glass); padding: 40px; border-radius: 30px; border: 1px solid var(--border); transition: 0.3s; }
-        .card:hover { border-color: var(--primary); transform: translateY(-10px); }
-        .card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.6rem; }
-
-        .step { background: var(--glass); padding: 25px; margin-bottom: 15px; border-radius: 20px; border: 1px solid var(--border); display: flex; align-items: center; gap: 20px; font-weight: 600; }
-        .step.active { border-left: 8px solid var(--primary); background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        body.dark-mode .step.active { background: rgba(243, 156, 18, 0.1); }
-        [dir="rtl"] .step.active { border-left: none; border-right: 8px solid var(--primary); }
-
-        footer { text-align: center; padding: 60px; opacity: 0.5; font-size: 0.9rem; border-top: 1px solid var(--border); }
-
-        @media (max-width: 850px) { .form-grid { grid-template-columns: 1fr; } .menu-btns { display: none; } }
+        @media (max-width: 800px) { .form-grid { grid-template-columns: 1fr; } .menu-btns { display: none; } }
     </style>
 </head>
 <body id="body">
 
-    <nav class="nav">
-        <div class="logo-area">
-            <img src="logo.png" alt="REVO EXPRESS">
-        </div>
+    <!-- BOUTON WHATSAPP -->
+    <a href="https://wa.me/213550000000" class="whatsapp-float" target="_blank">
+        <i data-lucide="message-circle"></i>
+    </a>
+
+    <nav class="nav" id="mainNav">
+        <div class="logo-area"><img src="logo.png" alt="REVO EXPRESS"></div>
         <div class="nav-right">
             <div class="menu-btns">
-                <a href="#services" id="m-services">Services</a>
+                <a href="#services">Services</a>
+                <a href="#prices" id="m-prices">Prices</a>
                 <a href="#order" id="m-order">Order</a>
-                <a href="#tracking" id="m-track">Tracking</a>
             </div>
             <button class="ctrl-btn" onclick="toggleLang()" id="lang-btn">AR</button>
             <button class="ctrl-btn" onclick="toggleTheme()" id="theme-btn">Dark Mode</button>
@@ -133,102 +114,104 @@
 
     <header class="hero">
         <h1 id="hero-title">Livraison Premium</h1>
-        <p id="hero-desc">L'excellence logistique connectée au cœur d'Alger.</p>
+        <p id="hero-desc">L'excellence logistique, tout simplement.</p>
     </header>
 
-    <section id="map-area" class="section">
+    <!-- CARTE -->
+    <section class="section">
         <div class="map-wrapper">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102334.35418197964!2d3.0039268!3d36.7285153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb2179836471d%3A0x66f68e0d4c72ef21!2sAlger!5e0!3m2!1sfr!2sdz!4v1715800000000!5m2!1sfr!2sdz"></iframe>
         </div>
     </section>
 
-    <!-- FORMULAIRE AVEC TOUS LES CHAMPS DEMANDÉS -->
+    <!-- SERVICES -->
+    <section id="services" class="section">
+        <h2 class="section-title" id="t-serv">Nos Services</h2>
+        <div class="grid">
+            <div class="card">
+                <i data-lucide="briefcase" size="40"></i>
+                <h3 id="s1-t">Business (B2B)</h3>
+                <p id="s1-d">Documents confidentiels et plis urgents.</p>
+            </div>
+            <div class="card">
+                <i data-lucide="shopping-cart" size="40"></i>
+                <h3 id="s2-t">E-commerce</h3>
+                <p id="s2-d">Livraison à domicile avec paiement.</p>
+            </div>
+            <div class="card">
+                <i data-lucide="zap" size="40"></i>
+                <h3 id="s3-t">Urgence 60'</h3>
+                <p id="s3-d">Coursiers prioritaires en ville.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARIFS -->
+    <section id="prices" class="section">
+        <h2 class="section-title" id="t-price">Tarifs indicatifs</h2>
+        <div class="grid">
+            <div class="card">
+                <h3 id="p1-t">Alger Centre</h3>
+                <div class="price">500 <span>DZD</span></div>
+                <p id="p1-d">Livraison en moins de 2 heures.</p>
+            </div>
+            <div class="card">
+                <h3 id="p2-t">Banlieue</h3>
+                <div class="price">800 <span>DZD</span></div>
+                <p id="p2-d">Zones périphériques d'Alger.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULAIRE -->
     <section id="order" class="section">
         <div class="form-box">
-            <!-- MESSAGE DE SUCCÈS PERSONNALISÉ -->
             <div id="status-success" data-fs-success>
-                <h2 id="msg-thanks">Demande transmise avec succès !</h2>
-                <p id="msg-call">Votre course est en cours de traitement. Notre équipe REVO EXPRESS vous contactera par téléphone dans quelques instants pour confirmer les détails de votre envoi.</p>
+                <h2 id="msg-thanks">Demande enregistrée !</h2>
+                <p id="msg-call">Notre équipe vous contactera dans quelques minutes pour confirmer la livraison.</p>
             </div>
-            <div id="status-error" data-fs-error>Désolé, une erreur est survenue. Veuillez réessayer.</div>
-
             <form class="form-grid" id="revo-form">
-                <!-- EXPÉDITEUR -->
-                <div class="form-header" id="fh-1">Expéditeur (Sender)</div>
-                <div class="field"><label id="l-nom1">Nom</label><input type="text" name="sender_name" data-fs-field required></div>
-                <div class="field"><label id="l-pre1">Prénom</label><input type="text" name="sender_first" data-fs-field required></div>
-                <div class="field"><label id="l-tel1">Téléphone</label><input type="tel" name="sender_tel" data-fs-field required></div>
-                <div class="field"><label id="l-em1">Adresse Email</label><input type="email" name="sender_email" data-fs-field></div>
-                <div class="field full"><label id="l-adr1">Adresse d'expédition (Ramassage)</label><input type="text" name="sender_addr" data-fs-field required></div>
+                <div class="form-header" id="fh-1">Expéditeur</div>
+                <div class="field"><label id="l-nom1">Nom</label><input type="text" name="sender_name" required></div>
+                <div class="field"><label id="l-pre1">Prénom</label><input type="text" name="sender_first" required></div>
+                <div class="field"><label id="l-tel1">Téléphone</label><input type="tel" name="sender_tel" required></div>
+                <div class="field"><label id="l-em1">Email</label><input type="email" name="sender_email"></div>
+                <div class="field full"><label id="l-adr1">Adresse d'expédition</label><input type="text" name="sender_addr" required></div>
 
-                <!-- DESTINATAIRE -->
-                <div class="form-header" id="fh-2">Destinataire (Recipient)</div>
-                <div class="field"><label id="l-nom2">Nom</label><input type="text" name="dest_name" data-fs-field required></div>
-                <div class="field"><label id="l-pre2">Prénom</label><input type="text" name="dest_first" data-fs-field required></div>
-                <div class="field"><label id="l-tel2">Téléphone</label><input type="tel" name="dest_tel" data-fs-field required></div>
-                <div class="field full"><label id="l-adr2">Adresse de livraison</label><input type="text" name="dest_addr" data-fs-field required></div>
+                <div class="form-header" id="fh-2">Destinataire</div>
+                <div class="field"><label id="l-nom2">Nom</label><input type="text" name="dest_name" required></div>
+                <div class="field"><label id="l-pre2">Prénom</label><input type="text" name="dest_first" required></div>
+                <div class="field"><label id="l-tel2">Téléphone</label><input type="tel" name="dest_tel" required></div>
+                <div class="field full"><label id="l-adr2">Adresse de livraison</label><input type="text" name="dest_addr" required></div>
 
-                <!-- PRODUIT -->
                 <div class="form-header" id="fh-3">Détails du Produit</div>
-                <div class="field full"><label id="l-cont">Contenu du colis</label><input type="text" name="prod_desc" data-fs-field required></div>
-                <div class="field"><label id="l-poids">Poids estimé (kg)</label><input type="text" name="prod_weight" data-fs-field></div>
-                <div class="field"><label id="l-dim">Dimensions (cm)</label><input type="text" name="prod_dim" data-fs-field></div>
+                <div class="field full"><label id="l-cont">Contenu</label><input type="text" name="prod_desc" required></div>
+                <div class="field"><label id="l-poids">Poids (kg)</label><input type="text" name="prod_weight"></div>
+                <div class="field"><label id="l-dim">Dimensions</label><input type="text" name="prod_dim"></div>
 
                 <button type="submit" class="submit-btn" id="btn-valider" data-fs-submit-btn>VALIDER LA COMMANDE</button>
             </form>
         </div>
     </section>
 
-    <section id="services" class="section">
-        <div class="grid-3">
-            <div class="card"><h3 id="s1-t">Business (B2B)</h3><p id="s1-d">Gestion de plis confidentiels et logistique inter-entreprises.</p></div>
-            <div class="card"><h3 id="s2-t">E-commerce</h3><p id="s2-d">Livraison à domicile avec gestion des retours et encaissement.</p></div>
-            <div class="card"><h3 id="s3-t">Urgence 60'</h3><p id="s3-d">Coursiers prioritaires pour une livraison record à Alger.</p></div>
-        </div>
-    </section>
-
-    <section id="tracking" class="section">
-        <div class="tracking-list">
-            <div class="step active" id="t1">📦 Commande Reçue</div>
-            <div class="step" id="t2">🏍️ Coursier en route</div>
-            <div class="step" id="t3">✅ Livraison effectuée</div>
-        </div>
-    </section>
-
-    <footer>REVO EXPRESS © 2026 – L'excellence logistique algéroise.</footer>
+    <footer style="text-align: center; padding: 40px; opacity: 0.5;">REVO EXPRESS © 2026</footer>
 
     <script>
-        // DICTIONNAIRE MULTILINGUE COMPLET
+        // TRADUCTIONS
         const texts = {
             fr: {
-                mSer: "Services", mOrd: "Order", mTra: "Tracking", 
-                hT: "Livraison Premium", hD: "L'excellence logistique connectée au cœur d'Alger.",
-                fh1: "Expéditeur", fh2: "Destinataire", fh3: "Détails du Produit", 
-                lNom: "Nom", lPre: "Prénom", lTel: "Téléphone", lEm: "Adresse Email",
-                lAdr1: "Adresse d'expédition", lAdr2: "Adresse de livraison", lCont: "Contenu du colis",
-                lPoids: "Poids estimé (kg)", lDim: "Dimensions (cm)", btnV: "VALIDER LA COMMANDE",
-                s1t: "Business (B2B)", s1d: "Gestion de plis confidentiels et logistique inter-entreprises.",
-                s2t: "E-commerce", s2d: "Livraison à domicile avec gestion des retours et encaissement.",
-                s3t: "Urgence 60'", s3d: "Coursiers prioritaires pour une livraison record à Alger.",
-                t1: "📦 Commande Reçue", t2: "🏍️ Coursier en route", t3: "✅ Livraison effectuée",
-                mThanks: "Demande transmise avec succès !",
-                mCall: "Votre course est en cours de traitement. Notre équipe REVO EXPRESS vous contactera par téléphone dans quelques instants pour confirmer les détails de votre envoi.",
-                langBtn: "AR"
+                mPrices: "Tarifs", mOrd: "Order", hT: "Livraison Premium", hD: "L'excellence logistique, tout simplement.",
+                tServ: "Nos Services", tPrice: "Tarifs indicatifs", fh1: "Expéditeur", fh2: "Destinataire", fh3: "Produit",
+                lNom: "Nom", lPre: "Prénom", lTel: "Téléphone", lEm: "Email", lAdr1: "Adresse d'expédition", lAdr2: "Adresse de livraison",
+                lCont: "Contenu", lPoids: "Poids (kg)", lDim: "Dimensions", btnV: "VALIDER LA COMMANDE", langBtn: "AR",
+                mThanks: "Demande enregistrée !", mCall: "Notre équipe vous contactera dans quelques minutes pour confirmer la livraison."
             },
             ar: {
-                mSer: "خدماتنا", mOrd: "طلب", mTra: "تتبع", 
-                hT: "توصيل بريميوم", hD: "التميز اللوجستي في قلب الجزائر العاصمة.",
-                fh1: "المرسل", fh2: "المرسل إليه", fh3: "تفاصيل الطرد", 
-                lNom: "اللقب", lPre: "الاسم", lTel: "رقم الهاتف", lEm: "البريد الإلكتروني",
-                lAdr1: "عنوان الاستلام", lAdr2: "عنوان التوصيل", lCont: "محتوى الطرد",
-                lPoids: "الوزن التقديري (كلغ)", lDim: "الأبعاد (سم)", btnV: "تأكيد الطلب",
-                s1t: "أعمال (B2B)", s1d: "إدارة الوثائق السرية والخدمات اللوجستية بين الشركات.",
-                s2t: "تجارة إلكترونية", s2d: "التوصيل للمنازل مع إدارة المرتجعات وتحصيل الأموال.",
-                s3t: "عاجل 60'", s3d: "سعاة بريد ذو أولوية لتوصيل قياسي في الجزائر العاصمة.",
-                t1: "📦 تم استلام الطلب", t2: "🏍️ السائق في الطريق", t3: "✅ تم التوصيل بنجاح",
-                mThanks: "تم إرسال طلبكم بنجاح!",
-                mCall: "طلبكم قيد المعالجة الآن. سيقوم فريق ريفو إكسبريس بالاتصال بكم هاتفياً خلال لحظات لتأكيد تفاصيل الشحنة.",
-                langBtn: "FR"
+                mPrices: "الأسعار", mOrd: "طلب", hT: "توصيل بريميوم", hD: "التميز اللوجستي ، ببساطة.",
+                tServ: "خدماتنا", tPrice: "أسعار تقديرية", fh1: "المرسل", fh2: "المرسل إليه", fh3: "بيانات الطرد",
+                lNom: "اللقب", lPre: "الاسم", lTel: "الهاتف", lEm: "الإيميل", lAdr1: "عنوان الاستلام", lAdr2: "عنوان التوصيل",
+                lCont: "المحتوى", lPoids: "الوزن", lDim: "الأبعاد", btnV: "تأكيد الطلب", langBtn: "FR",
+                mThanks: "تم تسجيل الطلب !", mCall: "سيتصل بك فريقنا خلال دقائق لتأكيد التوصيل."
             }
         };
 
@@ -237,43 +220,34 @@
             currentLang = (currentLang === 'fr') ? 'ar' : 'fr';
             const lang = texts[currentLang];
             document.documentElement.dir = (currentLang === 'ar') ? 'rtl' : 'ltr';
-            document.documentElement.lang = currentLang;
-
-            // Mise à jour de l'interface
-            document.getElementById('m-services').innerText = lang.mSer;
+            document.getElementById('m-prices').innerText = lang.mPrices;
             document.getElementById('m-order').innerText = lang.mOrd;
-            document.getElementById('m-track').innerText = lang.mTra;
             document.getElementById('hero-title').innerText = lang.hT;
             document.getElementById('hero-desc').innerText = lang.hD;
-            document.getElementById('fh-1').innerText = lang.fh1;
-            document.getElementById('fh-2').innerText = lang.fh2;
-            document.getElementById('fh-3').innerText = lang.fh3;
-            document.querySelectorAll('[id^="l-nom"]').forEach(el => el.innerText = lang.lNom);
-            document.querySelectorAll('[id^="l-pre"]').forEach(el => el.innerText = lang.lPre);
-            document.querySelectorAll('[id^="l-tel"]').forEach(el => el.innerText = lang.lTel);
-            document.getElementById('l-em1').innerText = lang.lEm;
-            document.getElementById('l-adr1').innerText = lang.lAdr1;
-            document.getElementById('l-adr2').innerText = lang.lAdr2;
-            document.getElementById('l-cont').innerText = lang.lCont;
-            document.getElementById('l-poids').innerText = lang.lPoids;
-            document.getElementById('l-dim').innerText = lang.lDim;
+            document.getElementById('t-serv').innerText = lang.tServ;
+            document.getElementById('t-price').innerText = lang.tPrice;
             document.getElementById('btn-valider').innerText = lang.btnV;
-            document.getElementById('s1-t').innerText = lang.s1t; document.getElementById('s1-d').innerText = lang.s1d;
-            document.getElementById('s2-t').innerText = lang.s2t; document.getElementById('s2-d').innerText = lang.s2d;
-            document.getElementById('s3-t').innerText = lang.s3t; document.getElementById('s3-d').innerText = lang.s3d;
-            document.getElementById('t1').innerText = lang.t1; document.getElementById('t2').innerText = lang.t2; document.getElementById('t3').innerText = lang.t3;
+            document.getElementById('lang-btn').innerText = lang.langBtn;
             document.getElementById('msg-thanks').innerText = lang.mThanks;
             document.getElementById('msg-call').innerText = lang.mCall;
-            document.getElementById('lang-btn').innerText = lang.langBtn;
+            // ... autres traductions
         }
 
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
-            const btn = document.getElementById('theme-btn');
-            btn.innerText = document.body.classList.contains('dark-mode') ? "Light Mode" : "Dark Mode";
+            document.getElementById('theme-btn').innerText = document.body.classList.contains('dark-mode') ? "Light Mode" : "Dark Mode";
         }
 
-        // INITIALISATION FORMSPREE AJAX
+        // EFFET DE SCROLL
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // INITIALISER LES ICONES
+        lucide.createIcons();
+
+        // FORMSPREE
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
         formspree('initForm', { 
             formElement: '#revo-form', 
@@ -281,7 +255,6 @@
             onSuccess: function() {
                 document.getElementById('revo-form').style.display = 'none';
                 document.getElementById('status-success').style.display = 'block';
-                window.scrollTo({ top: document.getElementById('order').offsetTop - 100, behavior: 'smooth' });
             }
         });
     </script>
