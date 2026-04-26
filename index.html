@@ -1,336 +1,83 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REVO EXPRESS – Livraison premium Alger</title>
+const express = require('express');
+const nodemailer = require('nodemailer');
+const cors = require('cors');
+require('dotenv').config();
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+const app = express();
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.static('public'));
 
-        body{
-            font-family:'Inter',sans-serif;
-            background:#0b1220;
-            color:#e5e7eb;
-            overflow-x:hidden;
-        }
-
-        /* ===== BACKGROUND ANIMÉ ===== */
-        .bg-blur{
-            position:fixed;
-            width:500px;
-            height:500px;
-            background:#f39c12;
-            filter:blur(160px);
-            top:-100px;
-            left:-100px;
-            opacity:0.25;
-            animation:move 10s infinite alternate;
-            z-index:-1;
-        }
-
-        .bg-blur2{
-            position:fixed;
-            width:500px;
-            height:500px;
-            background:#1e3a5f;
-            filter:blur(160px);
-            bottom:-150px;
-            right:-150px;
-            opacity:0.35;
-            animation:move2 12s infinite alternate;
-            z-index:-1;
-        }
-
-        @keyframes move{
-            from{transform:translate(0,0)}
-            to{transform:translate(120px,80px)}
-        }
-
-        @keyframes move2{
-            from{transform:translate(0,0)}
-            to{transform:translate(-120px,-80px)}
-        }
-
-        /* ===== NAV GLASS ===== */
-        .nav{
-            position:fixed;
-            top:0;
-            width:100%;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:18px 8%;
-            backdrop-filter:blur(15px);
-            background:rgba(15,43,61,0.6);
-            border-bottom:1px solid rgba(255,255,255,0.1);
-            z-index:100;
-        }
-
-        .nav a{
-            color:#cbd5e1;
-            margin-left:20px;
-            text-decoration:none;
-            transition:0.3s;
-        }
-
-        .nav a:hover{
-            color:#f39c12;
-        }
-
-        /* ===== HERO ===== */
-        .hero{
-            height:100vh;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            text-align:center;
-            padding:0 20px;
-        }
-
-        .hero h1{
-            font-size:3.2rem;
-            letter-spacing:-1px;
-        }
-
-        .hero p{
-            margin-top:15px;
-            max-width:700px;
-            opacity:0.8;
-        }
-
-        .btn{
-            margin-top:30px;
-            padding:14px 32px;
-            border-radius:50px;
-            background:#f39c12;
-            color:#0b1220;
-            font-weight:700;
-            text-decoration:none;
-            transition:0.3s;
-        }
-
-        .btn:hover{
-            transform:scale(1.05);
-            background:#e67e22;
-        }
-
-        /* ===== SECTIONS ===== */
-        .section{
-            padding:120px 8%;
-        }
-
-        h2{
-            text-align:center;
-            font-size:2.2rem;
-            margin-bottom:60px;
-        }
-
-        /* ===== CARDS GLASS ===== */
-        .cards{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-            gap:25px;
-        }
-
-        .card{
-            background:rgba(255,255,255,0.05);
-            border:1px solid rgba(255,255,255,0.1);
-            backdrop-filter:blur(10px);
-            border-radius:20px;
-            padding:30px;
-            transition:0.4s;
-        }
-
-        .card:hover{
-            transform:translateY(-10px);
-            border-color:#f39c12;
-        }
-
-        .card h3{
-            color:#f39c12;
-            margin-bottom:10px;
-        }
-
-        /* ===== SERVICES BUTTONS ===== */
-        .services{
-            display:flex;
-            flex-wrap:wrap;
-            justify-content:center;
-            gap:12px;
-            margin-bottom:60px;
-        }
-
-        .service-btn{
-            padding:10px 18px;
-            border-radius:40px;
-            background:#1e3a5f;
-            color:white;
-            text-decoration:none;
-            transition:0.3s;
-        }
-
-        .service-btn:hover{
-            background:#f39c12;
-            color:#0b1220;
-        }
-
-        /* ===== FORM ===== */
-        .form{
-            max-width:600px;
-            margin:auto;
-            background:rgba(255,255,255,0.05);
-            padding:30px;
-            border-radius:20px;
-            backdrop-filter:blur(10px);
-        }
-
-        .form input, .form textarea{
-            width:100%;
-            padding:12px;
-            margin:10px 0;
-            border-radius:10px;
-            border:none;
-            outline:none;
-        }
-
-        .form button{
-            width:100%;
-            padding:12px;
-            background:#f39c12;
-            border:none;
-            border-radius:10px;
-            font-weight:bold;
-            cursor:pointer;
-        }
-
-        /* ===== TRACKING ===== */
-        .track{
-            text-align:center;
-        }
-
-        .step{
-            margin:15px 0;
-            padding:15px;
-            background:rgba(255,255,255,0.05);
-            border-radius:10px;
-        }
-
-        .active{
-            border-left:4px solid #f39c12;
-        }
-
-        /* ===== FADE IN ===== */
-        .hidden{
-            opacity:0;
-            transform:translateY(30px);
-            transition:0.8s;
-        }
-
-        .show{
-            opacity:1;
-            transform:translateY(0);
-        }
-
-        /* ===== FOOTER ===== */
-        .footer{
-            text-align:center;
-            padding:50px;
-            background:#0f2b3d;
-        }
-    </style>
-</head>
-<body>
-
-<div class="bg-blur"></div>
-<div class="bg-blur2"></div>
-
-<!-- NAV -->
-<div class="nav">
-    <div><img src="logo.png" alt="REVO EXPRESS" style="height:40px;"></div>
-    <div><strong>REVO EXPRESS</strong></div>
-    <div>
-        <a href="#services">Services</a>
-        <a href="#order">Commande</a>
-        <a href="#tracking">Tracking</a>
-    </div>
-</div>
-
-<!-- HERO -->
-<section class="hero hidden">
-    <h1>Livraison premium à Alger</h1>
-    <p>Rapide, sécurisé et intelligent. Une nouvelle génération de livraison.</p>
-    <a href="#order" class="btn">Commander maintenant</a>
-</section>
-
-<!-- SERVICES BUTTONS -->
-<section class="section hidden">
-    <div class="services">
-        <a class="service-btn">B2B</a>
-        <a class="service-btn">B2C</a>
-        <a class="service-btn">Repas</a>
-        <a class="service-btn">Urgence</a>
-    </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="section hidden">
-    <h2>Nos services</h2>
-    <div class="cards">
-        <div class="card"><h3>B2B</h3><p>Documents professionnels sécurisés.</p></div>
-        <div class="card"><h3>B2C</h3><p>Livraison e-commerce rapide.</p></div>
-        <div class="card"><h3>Urgence</h3><p>Livraison immédiate moto.</p></div>
-    </div>
-</section>
-
-<!-- ORDER FORM -->
-<section id="order" class="section hidden">
-    <h2>Commande intelligente</h2>
-    <div class="form">
-        <input placeholder="Nom">
-        <input placeholder="Téléphone">
-        <input placeholder="Adresse pickup">
-        <input placeholder="Adresse livraison">
-        <textarea placeholder="Détails du colis"></textarea>
-        <button>Envoyer commande</button>
-    </div>
-</section>
-
-<!-- TRACKING -->
-<section id="tracking" class="section hidden track">
-    <h2>Tracking livraison</h2>
-    <div class="step active">📦 Commande reçue</div>
-    <div class="step">🏍 Livreurs assignés</div>
-    <div class="step">🚀 En route</div>
-    <div class="step">✅ Livré</div>
-</section>
-
-<!-- FOOTER -->
-<div class="footer">
-    REVO EXPRESS © 2026
-</div>
-
-<script>
-// FADE IN SCROLL
-const elements=document.querySelectorAll('.hidden');
-
-const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add('show');
-        }
-    });
+// Configurer Nodemailer
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS
+    }
 });
 
-elements.forEach(el=>observer.observe(el));
-</script>
+// Route GET - Afficher le site
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
 
-</body>
-</html>
+// Route POST - Envoyer commande par email
+app.post('/api/send-order', async (req, res) => {
+    try {
+        const { nom, telephone, adressePickup, adresseLivraison, details } = req.body;
+
+        // Validation
+        if (!nom || !telephone || !adressePickup || !adresseLivraison || !details) {
+            return res.status(400).json({ error: 'Tous les champs sont obligatoires' });
+        }
+
+        // HTML Email
+        const htmlContent = `
+        <div style="font-family: Arial, sans-serif; background: #0b1220; color: #e5e7eb; padding: 20px;">
+            <div style="max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.05); border-radius: 15px; padding: 30px;">
+                <h2 style="color: #f39c12; text-align: center;">🚀 NOUVELLE COMMANDE</h2>
+                <hr style="border: 1px solid rgba(255,255,255,0.1);">
+                
+                <h3 style="color: #f39c12;">Client:</h3>
+                <p><strong>Nom:</strong> ${nom}</p>
+                <p><strong>Téléphone:</strong> ${telephone}</p>
+                
+                <h3 style="color: #f39c12;">Adresses:</h3>
+                <p><strong>📍 Pickup:</strong> ${adressePickup}</p>
+                <p><strong>📍 Livraison:</strong> ${adresseLivraison}</p>
+                
+                <h3 style="color: #f39c12;">Détails:</h3>
+                <p>${details}</p>
+                
+                <hr style="border: 1px solid rgba(255,255,255,0.1);">
+                <p style="text-align: center; font-size: 12px; color: #999;">
+                    ${new Date().toLocaleString('fr-FR')}
+                </p>
+            </div>
+        </div>
+        `;
+
+        // Envoyer l'email
+        await transporter.sendMail({
+            from: process.env.GMAIL_USER,
+            to: process.env.GMAIL_USER,
+            subject: `📦 Commande REVO EXPRESS - ${nom}`,
+            html: htmlContent
+        });
+
+        res.json({ success: true, message: '✅ Commande envoyée!' });
+
+    } catch (error) {
+        console.error('Erreur:', error);
+        res.status(500).json({ error: 'Erreur lors de l\'envoi' });
+    }
+});
+
+// Démarrer
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`🚀 Serveur sur http://localhost:${PORT}`);
+});
