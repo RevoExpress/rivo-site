@@ -6,106 +6,99 @@
     <title>REVO EXPRESS – Premium Delivery Algiers</title>
 
     <!-- Polices et Icônes -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
+        /* THÈME ORANGE ET NOIR */
         :root {
-            --bg: #f9fafb; --text: #111827; --primary: #f39c12; --glass: rgba(255, 255, 255, 0.8);
-            --border: rgba(0, 0, 0, 0.1); --card: #ffffff; --map-filter: none;
+            --bg: #ffffff;
+            --text: #0b1220; /* Noir profond */
+            --primary: #f39c12; /* Orange REVO */
+            --secondary: #1a1a1a;
+            --glass: rgba(255, 255, 255, 0.9);
+            --border: #e5e7eb;
+            --card: #f9fafb;
+            --map-filter: none;
         }
 
         body.dark-mode {
-            --bg: #0b1220; --text: #f3f4f6; --glass: rgba(11, 18, 32, 0.8);
-            --border: rgba(255, 255, 255, 0.1); --card: rgba(255, 255, 255, 0.05);
+            --bg: #0b1220;
+            --text: #f9fafb;
+            --secondary: #f39c12;
+            --glass: rgba(11, 18, 32, 0.9);
+            --border: #2d3748;
+            --card: #1a1a1a;
             --map-filter: grayscale(1) invert(1) contrast(0.9);
         }
 
         [dir="rtl"] { font-family: 'Cairo', sans-serif; }
         [dir="ltr"] { font-family: 'Inter', sans-serif; }
 
-        * { margin:0; padding:0; box-sizing:border-box; transition: all 0.3s ease; }
+        * { margin:0; padding:0; box-sizing:border-box; transition: 0.3s; }
         html { scroll-behavior: smooth; }
-        body { background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        body { background: var(--bg); color: var(--text); line-height: 1.6; }
 
-        /* NAVIGATION */
+        /* NAV */
         .nav {
             position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between;
-            align-items: center; padding: 20px 5%; background: transparent; z-index: 1000;
+            align-items: center; padding: 10px 5%; background: var(--glass);
+            backdrop-filter: blur(10px); border-bottom: 2px solid var(--primary); z-index: 1000;
         }
-        .nav.scrolled { padding: 10px 5%; background: var(--glass); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
-        .logo-area img { height: 60px; width: auto; }
+        .logo-area img { height: 80px; width: auto; }
 
         .nav-right { display: flex; align-items: center; gap: 15px; }
         .menu-btns { display: flex; gap: 10px; }
         .menu-btns a { 
-            text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.85rem;
-            padding: 8px 16px; border-radius: 10px; border: 1px solid var(--border);
+            text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.85rem;
+            padding: 10px 15px; border-radius: 8px; border: 1px solid var(--border);
         }
-        .menu-btns a:hover { border-color: var(--primary); color: var(--primary); }
+        .menu-btns a:hover { background: var(--primary); color: #000; border-color: var(--primary); }
 
-        .ctrl-btn { background: var(--text); color: var(--bg); border: none; padding: 10px 15px; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.75rem; }
+        .ctrl-btn { background: var(--text); color: var(--bg); border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 800; font-size: 0.75rem; }
 
         /* HERO */
-        .hero { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; background: linear-gradient(to bottom, rgba(243, 156, 18, 0.05), transparent); }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; margin-bottom: 15px; }
+        .hero { height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: var(--text); color: #fff; padding: 0 20px; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; color: var(--primary); }
 
-        /* SECTIONS */
-        .section { padding: 60px 10%; }
-        .section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; font-weight: 800; color: var(--primary); }
-
-        /* CARDS (Services & Pricing) */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background: var(--card); padding: 30px; border-radius: 25px; border: 1px solid var(--border); text-align: center; }
-        .card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        .card i { color: var(--primary); margin-bottom: 20px; }
-        .price { font-size: 2.5rem; font-weight: 800; margin: 15px 0; }
-        .price span { font-size: 1rem; opacity: 0.6; }
-
-        /* MAP */
-        .map-wrapper { width: 100%; height: 400px; border-radius: 30px; overflow: hidden; border: 2px solid var(--primary); }
-        .map-wrapper iframe { width: 100%; height: 100%; border: none; filter: var(--map-filter); }
+        /* CALCULATEUR DE PRIX */
+        .calc-box { background: var(--primary); color: #000; padding: 30px; border-radius: 20px; max-width: 600px; margin: -50px auto 40px; position: relative; z-index: 10; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+        select { padding: 12px; border-radius: 8px; border: none; font-weight: 600; width: 100%; }
+        .price-display { font-size: 2rem; font-weight: 900; margin-top: 15px; display: block; }
 
         /* FORMULAIRE */
-        .form-box { background: var(--card); padding: 40px; border-radius: 30px; border: 1px solid var(--border); max-width: 900px; margin: auto; }
+        .section { padding: 60px 10%; }
+        .form-box { background: var(--card); padding: 40px; border-radius: 30px; border: 1px solid var(--border); max-width: 950px; margin: auto; }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .form-header { grid-column: span 2; color: var(--primary); font-weight: 800; border-bottom: 2px solid var(--primary); margin-top: 20px; padding-bottom: 5px; font-size: 0.9rem; }
-        .field { display: flex; flex-direction: column; gap: 5px; }
-        .field label { font-size: 0.75rem; font-weight: 700; opacity: 0.6; text-transform: uppercase; }
-        input { padding: 14px; border-radius: 12px; border: 1px solid var(--border); background: rgba(128,128,128,0.05); color: var(--text); outline: none; }
-        input:focus { border-color: var(--primary); background: transparent; }
+        .form-header { grid-column: span 2; color: var(--primary); font-weight: 800; border-bottom: 2px solid var(--primary); margin: 25px 0 10px; }
+        input { padding: 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--text); outline: none; }
+        input:invalid { border-color: #ff4d4d; }
         .full { grid-column: span 2; }
-        .submit-btn { grid-column: span 2; background: var(--primary); border: none; padding: 20px; border-radius: 15px; font-weight: 800; cursor: pointer; margin-top: 20px; font-size: 1.1rem; color: #000; }
+        .submit-btn { grid-column: span 2; background: var(--primary); border: none; padding: 20px; border-radius: 15px; font-weight: 800; cursor: pointer; font-size: 1.2rem; }
 
-        /* WHATSAPP FLOTTANT */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white;
-            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-            z-index: 1000; text-decoration: none; font-size: 30px;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); rotate: 10deg; }
+        /* MAP */
+        .map-wrapper { width: 100%; height: 400px; border-radius: 30px; overflow: hidden; border: 3px solid var(--text); margin-bottom: 40px; }
+        .map-wrapper iframe { width: 100%; height: 100%; border: none; filter: var(--map-filter); }
 
-        /* MESSAGES FORMSPREE */
-        #status-success { display: none; background: rgba(39, 174, 96, 0.1); color: #27ae60; padding: 40px; border-radius: 25px; border: 2px solid #27ae60; text-align: center; }
+        /* WHATSAPP */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 1000; box-shadow: 0 10px 20px rgba(0,0,0,0.2); text-decoration: none; }
 
-        @media (max-width: 800px) { .form-grid { grid-template-columns: 1fr; } .menu-btns { display: none; } }
+        #status-success { display: none; background: #27ae60; color: white; padding: 30px; border-radius: 20px; text-align: center; margin-bottom: 20px; }
+
+        @media (max-width: 800px) { .form-grid, .calc-grid { grid-template-columns: 1fr; } .menu-btns { display: none; } }
     </style>
 </head>
 <body id="body">
 
-    <!-- BOUTON WHATSAPP -->
-    <a href="https://wa.me/213550000000" class="whatsapp-float" target="_blank">
-        <i data-lucide="message-circle"></i>
-    </a>
+    <a href="https://wa.me/213550000000" class="whatsapp-float" target="_blank"><i data-lucide="message-circle" size="32"></i></a>
 
-    <nav class="nav" id="mainNav">
-        <div class="logo-area"><img src="logo.png" alt="REVO EXPRESS"></div>
+    <nav class="nav">
+        <div class="logo-area"><img src="logo.png" alt="REVO"></div>
         <div class="nav-right">
             <div class="menu-btns">
-                <a href="#services">Services</a>
-                <a href="#prices" id="m-prices">Prices</a>
-                <a href="#order" id="m-order">Order</a>
+                <a href="#map-area">Zone</a>
+                <a href="#order">Order</a>
             </div>
             <button class="ctrl-btn" onclick="toggleLang()" id="lang-btn">AR</button>
             <button class="ctrl-btn" onclick="toggleTheme()" id="theme-btn">Dark Mode</button>
@@ -113,78 +106,55 @@
     </nav>
 
     <header class="hero">
-        <h1 id="hero-title">Livraison Premium</h1>
-        <p id="hero-desc">L'excellence logistique, tout simplement.</p>
+        <h1 id="hero-title">Premium Delivery</h1>
+        <p id="hero-desc">Fast. Secure. Orange.</p>
     </header>
 
-    <!-- CARTE -->
-    <section class="section">
+    <!-- CALCULATEUR DE PRIX -->
+    <section class="calc-box">
+        <h3 id="calc-title">Estimation Tarifaire</h3>
+        <div class="calc-grid">
+            <select id="start-zone" onchange="calculatePrice()">
+                <option value="1">Alger Centre / Sidi M'hamed</option>
+                <option value="1">Hydra / El Biar</option>
+                <option value="2">Bab Ezzouar / Dar El Beida</option>
+                <option value="2">Zeralda / Staoueli</option>
+            </select>
+            <select id="end-zone" onchange="calculatePrice()">
+                <option value="1">Alger Centre / Sidi M'hamed</option>
+                <option value="1">Hydra / El Biar</option>
+                <option value="2">Bab Ezzouar / Dar El Beida</option>
+                <option value="2">Zeralda / Staoueli</option>
+            </select>
+        </div>
+        <span class="price-display"><span id="estimated-price">500</span> DZD</span>
+    </section>
+
+    <section id="map-area" class="section">
         <div class="map-wrapper">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102334.35418197964!2d3.0039268!3d36.7285153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb2179836471d%3A0x66f68e0d4c72ef21!2sAlger!5e0!3m2!1sfr!2sdz!4v1715800000000!5m2!1sfr!2sdz"></iframe>
         </div>
     </section>
 
-    <!-- SERVICES -->
-    <section id="services" class="section">
-        <h2 class="section-title" id="t-serv">Nos Services</h2>
-        <div class="grid">
-            <div class="card">
-                <i data-lucide="briefcase" size="40"></i>
-                <h3 id="s1-t">Business (B2B)</h3>
-                <p id="s1-d">Documents confidentiels et plis urgents.</p>
-            </div>
-            <div class="card">
-                <i data-lucide="shopping-cart" size="40"></i>
-                <h3 id="s2-t">E-commerce</h3>
-                <p id="s2-d">Livraison à domicile avec paiement.</p>
-            </div>
-            <div class="card">
-                <i data-lucide="zap" size="40"></i>
-                <h3 id="s3-t">Urgence 60'</h3>
-                <p id="s3-d">Coursiers prioritaires en ville.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- TARIFS -->
-    <section id="prices" class="section">
-        <h2 class="section-title" id="t-price">Tarifs indicatifs</h2>
-        <div class="grid">
-            <div class="card">
-                <h3 id="p1-t">Alger Centre</h3>
-                <div class="price">500 <span>DZD</span></div>
-                <p id="p1-d">Livraison en moins de 2 heures.</p>
-            </div>
-            <div class="card">
-                <h3 id="p2-t">Banlieue</h3>
-                <div class="price">800 <span>DZD</span></div>
-                <p id="p2-d">Zones périphériques d'Alger.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FORMULAIRE -->
     <section id="order" class="section">
         <div class="form-box">
-            <div id="status-success" data-fs-success>
-                <h2 id="msg-thanks">Demande enregistrée !</h2>
-                <p id="msg-call">Notre équipe vous contactera dans quelques minutes pour confirmer la livraison.</p>
-            </div>
+            <div id="status-success" data-fs-success>Merci ! REVO EXPRESS vous contactera sous peu.</div>
             <form class="form-grid" id="revo-form">
                 <div class="form-header" id="fh-1">Expéditeur</div>
-                <div class="field"><label id="l-nom1">Nom</label><input type="text" name="sender_name" required></div>
+                <div class="field"><label id="l-nom1">Nom</label><input type="text" name="sender_last" required></div>
                 <div class="field"><label id="l-pre1">Prénom</label><input type="text" name="sender_first" required></div>
-                <div class="field"><label id="l-tel1">Téléphone</label><input type="tel" name="sender_tel" required></div>
+                <!-- Validation Algérienne : 05, 06 ou 07 suivis de 8 chiffres -->
+                <div class="field"><label id="l-tel1">Téléphone</label><input type="tel" name="sender_tel" pattern="^(05|06|07)[0-9]{8}$" title="Format: 05XXXXXXXX" required></div>
                 <div class="field"><label id="l-em1">Email</label><input type="email" name="sender_email"></div>
-                <div class="field full"><label id="l-adr1">Adresse d'expédition</label><input type="text" name="sender_addr" required></div>
+                <div class="field full"><label id="l-adr1">Adresse de ramassage</label><input type="text" name="sender_addr" required></div>
 
                 <div class="form-header" id="fh-2">Destinataire</div>
-                <div class="field"><label id="l-nom2">Nom</label><input type="text" name="dest_name" required></div>
+                <div class="field"><label id="l-nom2">Nom</label><input type="text" name="dest_last" required></div>
                 <div class="field"><label id="l-pre2">Prénom</label><input type="text" name="dest_first" required></div>
-                <div class="field"><label id="l-tel2">Téléphone</label><input type="tel" name="dest_tel" required></div>
+                <div class="field"><label id="l-tel2">Téléphone</label><input type="tel" name="dest_tel" pattern="^(05|06|07)[0-9]{8}$" title="Format: 05XXXXXXXX" required></div>
                 <div class="field full"><label id="l-adr2">Adresse de livraison</label><input type="text" name="dest_addr" required></div>
 
-                <div class="form-header" id="fh-3">Détails du Produit</div>
+                <div class="form-header" id="fh-3">Produit</div>
                 <div class="field full"><label id="l-cont">Contenu</label><input type="text" name="prod_desc" required></div>
                 <div class="field"><label id="l-poids">Poids (kg)</label><input type="text" name="prod_weight"></div>
                 <div class="field"><label id="l-dim">Dimensions</label><input type="text" name="prod_dim"></div>
@@ -194,24 +164,32 @@
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 40px; opacity: 0.5;">REVO EXPRESS © 2026</footer>
-
     <script>
-        // TRADUCTIONS
+        // CALCULATEUR DE PRIX SIMPLE
+        function calculatePrice() {
+            const start = document.getElementById('start-zone').value;
+            const end = document.getElementById('end-zone').value;
+            let price = 500; // Prix de base
+
+            if (start !== end) {
+                price = 800; // Prix si on change de zone (ex: Centre vers Zeralda)
+            }
+            document.getElementById('estimated-price').innerText = price;
+        }
+
+        // LANGUES
         const texts = {
             fr: {
-                mPrices: "Tarifs", mOrd: "Order", hT: "Livraison Premium", hD: "L'excellence logistique, tout simplement.",
-                tServ: "Nos Services", tPrice: "Tarifs indicatifs", fh1: "Expéditeur", fh2: "Destinataire", fh3: "Produit",
-                lNom: "Nom", lPre: "Prénom", lTel: "Téléphone", lEm: "Email", lAdr1: "Adresse d'expédition", lAdr2: "Adresse de livraison",
-                lCont: "Contenu", lPoids: "Poids (kg)", lDim: "Dimensions", btnV: "VALIDER LA COMMANDE", langBtn: "AR",
-                mThanks: "Demande enregistrée !", mCall: "Notre équipe vous contactera dans quelques minutes pour confirmer la livraison."
+                hT: "Premium Delivery", hD: "Fast. Secure. Orange.", calcT: "Estimation Tarifaire",
+                fh1: "Expéditeur", fh2: "Destinataire", fh3: "Produit", lNom: "Nom", lPre: "Prénom", lTel: "Téléphone",
+                lEm: "Email", lAdr1: "Adresse d'expédition", lAdr2: "Adresse de livraison", lCont: "Contenu",
+                btnV: "VALIDER LA COMMANDE", langBtn: "AR"
             },
             ar: {
-                mPrices: "الأسعار", mOrd: "طلب", hT: "توصيل بريميوم", hD: "التميز اللوجستي ، ببساطة.",
-                tServ: "خدماتنا", tPrice: "أسعار تقديرية", fh1: "المرسل", fh2: "المرسل إليه", fh3: "بيانات الطرد",
-                lNom: "اللقب", lPre: "الاسم", lTel: "الهاتف", lEm: "الإيميل", lAdr1: "عنوان الاستلام", lAdr2: "عنوان التوصيل",
-                lCont: "المحتوى", lPoids: "الوزن", lDim: "الأبعاد", btnV: "تأكيد الطلب", langBtn: "FR",
-                mThanks: "تم تسجيل الطلب !", mCall: "سيتصل بك فريقنا خلال دقائق لتأكيد التوصيل."
+                hT: "توصيل بريميوم", hD: "سريع. آمن. برتقالي.", calcT: "تقدير السعر",
+                fh1: "المرسل", fh2: "المرسل إليه", fh3: "بيانات الطرد", lNom: "اللقب", lPre: "الاسم", lTel: "الهاتف",
+                lEm: "Email", lAdr1: "عنوان الاستلام", lAdr2: "عنوان التوصيل", lCont: "المحتوى",
+                btnV: "تأكيد الطلب", langBtn: "FR"
             }
         };
 
@@ -220,17 +198,14 @@
             currentLang = (currentLang === 'fr') ? 'ar' : 'fr';
             const lang = texts[currentLang];
             document.documentElement.dir = (currentLang === 'ar') ? 'rtl' : 'ltr';
-            document.getElementById('m-prices').innerText = lang.mPrices;
-            document.getElementById('m-order').innerText = lang.mOrd;
             document.getElementById('hero-title').innerText = lang.hT;
             document.getElementById('hero-desc').innerText = lang.hD;
-            document.getElementById('t-serv').innerText = lang.tServ;
-            document.getElementById('t-price').innerText = lang.tPrice;
+            document.getElementById('calc-title').innerText = lang.calcT;
+            document.getElementById('fh-1').innerText = lang.fh1;
+            document.getElementById('fh-2').innerText = lang.fh2;
+            document.getElementById('fh-3').innerText = lang.fh3;
             document.getElementById('btn-valider').innerText = lang.btnV;
             document.getElementById('lang-btn').innerText = lang.langBtn;
-            document.getElementById('msg-thanks').innerText = lang.mThanks;
-            document.getElementById('msg-call').innerText = lang.mCall;
-            // ... autres traductions
         }
 
         function toggleTheme() {
@@ -238,16 +213,9 @@
             document.getElementById('theme-btn').innerText = document.body.classList.contains('dark-mode') ? "Light Mode" : "Dark Mode";
         }
 
-        // EFFET DE SCROLL
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('mainNav');
-            nav.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        // INITIALISER LES ICONES
         lucide.createIcons();
 
-        // FORMSPREE
+        // Formspree
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
         formspree('initForm', { 
             formElement: '#revo-form', 
