@@ -8,12 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+        /* LES COULEURS */
         :root {
             --bg: #f9fafb;
             --text: #111827;
             --primary: #f39c12;
             --glass: rgba(0, 0, 0, 0.03);
-            --border: rgba(0, 0, 0, 0.08);
+            --border: rgba(0, 0, 0, 0.1);
             --nav-bg: rgba(255, 255, 255, 0.9);
             --map-filter: none;
         }
@@ -27,21 +28,21 @@
             --map-filter: grayscale(1) invert(1) contrast(0.9);
         }
 
+        /* CHANGEMENT DE POLICE SELON LA LANGUE */
         [dir="rtl"] { font-family: 'Cairo', sans-serif; }
         [dir="ltr"] { font-family: 'Inter', sans-serif; }
 
-        * { margin:0; padding:0; box-sizing:border-box; transition: background 0.3s, color 0.3s, transform 0.2s; }
+        * { margin:0; padding:0; box-sizing:border-box; transition: background 0.3s, color 0.3s; }
         html { scroll-behavior: smooth; }
         body { background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
-        /* NAVIGATION */
+        /* BARRE DE NAVIGATION */
         .nav {
             position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between;
             align-items: center; padding: 10px 5%; background: var(--nav-bg);
             backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000;
         }
-
-        .logo-area img { height: 80px; width: auto; }
+        .logo-area img { height: 75px; width: auto; }
 
         .nav-right { display: flex; align-items: center; gap: 15px; }
         
@@ -50,52 +51,49 @@
             text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.85rem;
             padding: 10px 18px; border-radius: 12px; border: 1px solid var(--border); background: var(--glass);
         }
-        .menu-btns a:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+        .menu-btns a:hover { border-color: var(--primary); color: var(--primary); }
 
         .ctrl-btn {
             background: var(--text); color: var(--bg); border: none; 
             padding: 10px 15px; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 0.8rem;
         }
 
-        /* SECTIONS */
-        .section { padding: 80px 10% 40px; }
-        .hero { height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .hero h1 { font-size: clamp(2rem, 8vw, 3.5rem); margin-bottom: 10px; line-height: 1.2; }
+        /* TEXTE D'ACCUEIL */
+        .hero { height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
+        .hero h1 { font-size: clamp(2rem, 8vw, 3.5rem); margin-bottom: 10px; }
 
-        /* MAP */
+        /* LA CARTE */
+        .section { padding: 40px 10%; }
         .map-wrapper { 
             width: 100%; height: 400px; border-radius: 25px; overflow: hidden; 
-            border: 2px solid var(--primary); margin-top: -40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         .map-wrapper iframe { width: 100%; height: 100%; border: none; filter: var(--map-filter); }
 
-        /* FORMULAIRE */
-        .form-box { background: var(--glass); padding: 40px; border-radius: 30px; border: 1px solid var(--border); max-width: 900px; margin: auto; }
+        /* LE FORMULAIRE */
+        .form-box { background: var(--glass); padding: 40px; border-radius: 30px; border: 1px solid var(--border); max-width: 950px; margin: auto; }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; }
         [dir="rtl"] .form-grid { text-align: right; }
         
-        .form-header { grid-column: span 2; color: var(--primary); font-weight: 800; border-bottom: 2px solid var(--primary); margin: 25px 0 10px; font-size: 0.9rem; }
+        .form-header { grid-column: span 2; color: var(--primary); font-weight: 800; border-bottom: 2px solid var(--primary); margin: 25px 0 10px; font-size: 0.95rem; text-transform: uppercase; }
         .field { display: flex; flex-direction: column; gap: 5px; }
-        .field label { font-size: 0.75rem; font-weight: 700; opacity: 0.6; text-transform: uppercase; }
-        input { padding: 14px; border-radius: 10px; border: 1px solid var(--border); outline: none; background: rgba(128,128,128,0.05); color: var(--text); }
-        input:focus { border-color: var(--primary); }
+        .field label { font-size: 0.75rem; font-weight: 700; opacity: 0.6; }
+        input { padding: 14px; border-radius: 10px; border: 1px solid var(--border); outline: none; background: rgba(128,128,128,0.05); color: var(--text); font-family: inherit; }
         .full { grid-column: span 2; }
         
         .submit-btn { 
             grid-column: span 2; background: var(--primary); border: none; padding: 20px; 
-            border-radius: 15px; font-weight: 800; cursor: pointer; margin-top: 30px; font-size: 1.1rem;
+            border-radius: 15px; font-weight: 800; cursor: pointer; margin-top: 30px; font-size: 1.1rem; color: #000;
         }
-        .submit-btn:hover { background: #e67e22; transform: scale(1.02); }
+        .submit-btn:hover { transform: scale(1.02); background: #e67e22; }
 
-        /* CARDS */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
-        .card { background: var(--glass); padding: 35px; border-radius: 25px; border: 1px solid var(--border); }
-        .card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.5rem; }
+        /* SERVICES & TRACKING */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { background: var(--glass); padding: 30px; border-radius: 25px; border: 1px solid var(--border); }
+        .card h3 { color: var(--primary); margin-bottom: 15px; }
 
-        /* TRACKING */
-        .tracking-list { max-width: 600px; margin: 0 auto; }
-        .step { background: var(--glass); padding: 20px; margin-bottom: 12px; border-radius: 15px; border: 1px solid var(--border); display: flex; align-items: center; gap: 15px; font-weight: 600; }
-        .step.active { border-left: 6px solid var(--primary); background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .step { background: var(--glass); padding: 20px; margin-bottom: 10px; border-radius: 15px; border: 1px solid var(--border); display: flex; align-items: center; gap: 15px; font-weight: 600; }
+        .step.active { border-left: 6px solid var(--primary); background: #fff; }
         body.dark-mode .step.active { background: rgba(243, 156, 18, 0.1); }
         [dir="rtl"] .step.active { border-left: none; border-right: 6px solid var(--primary); }
 
@@ -124,9 +122,7 @@
         <p id="hero-desc">La logistique intelligente à Alger.</p>
     </header>
 
-    <!-- LA MAP (Elle est revenue !) -->
-    <section id="map-section" class="section">
-        <h2 id="map-title" style="text-align:center; margin-bottom:30px;">Zone d'intervention</h2>
+    <section id="map-area" class="section">
         <div class="map-wrapper">
             <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102334.35418197964!2d3.0039268!3d36.7285153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb2179836471d%3A0x66f68e0d4c72ef21!2sAlger!5e0!3m2!1sfr!2sdz!4v1715800000000!5m2!1sfr!2sdz">
@@ -142,22 +138,31 @@
         </div>
     </section>
 
+    <!-- LE FORMULAIRE COMPLET -->
     <section id="order" class="section">
         <div class="form-box">
             <form class="form-grid" id="mainForm">
-                <div class="form-header" id="f-head-1">EXPÉDITEUR</div>
-                <div class="field"><label id="l-nom1">Nom</label><input type="text" id="p-nom1" placeholder="Nom" required></div>
-                <div class="field"><label id="l-tel1">Téléphone</label><input type="tel" id="p-tel1" placeholder="05XXXXXXXX" required></div>
-                <div class="field full"><label id="l-adr1">Adresse de ramassage</label><input type="text" id="p-adr1" placeholder="Adresse complète" required></div>
+                
+                <!-- SECTION EXPÉDITEUR -->
+                <div class="form-header" id="f-head-1">Expéditeur (Sender)</div>
+                <div class="field"><label id="l-nom1">Nom</label><input type="text" placeholder="Nom" required></div>
+                <div class="field"><label id="l-pre1">Prénom</label><input type="text" placeholder="Prénom" required></div>
+                <div class="field"><label id="l-tel1">Téléphone</label><input type="tel" placeholder="05XXXXXXXX" required></div>
+                <div class="field"><label id="l-em1">Email</label><input type="email" placeholder="email@exemple.com"></div>
+                <div class="field full"><label id="l-adr1">Adresse d'expédition</label><input type="text" placeholder="Adresse précise de ramassage" required></div>
 
-                <div class="form-header" id="f-head-2">DESTINATAIRE</div>
-                <div class="field"><label id="l-nom2">Nom</label><input type="text" id="p-nom2" placeholder="Nom" required></div>
-                <div class="field"><label id="l-tel2">Téléphone</label><input type="tel" id="p-tel2" placeholder="05XXXXXXXX" required></div>
-                <div class="field full"><label id="l-adr2">Adresse de livraison</label><input type="text" id="p-adr2" placeholder="Adresse complète" required></div>
+                <!-- SECTION DESTINATAIRE -->
+                <div class="form-header" id="f-head-2">Destinataire (Recipient)</div>
+                <div class="field"><label id="l-nom2">Nom</label><input type="text" placeholder="Nom" required></div>
+                <div class="field"><label id="l-pre2">Prénom</label><input type="text" placeholder="Prénom" required></div>
+                <div class="field"><label id="l-tel2">Téléphone</label><input type="tel" placeholder="05XXXXXXXX" required></div>
+                <div class="field full"><label id="l-adr2">Adresse de livraison</label><input type="text" placeholder="Adresse précise de destination" required></div>
 
-                <div class="form-header" id="f-head-3">PRODUIT</div>
-                <div class="field"><label id="l-poids">Poids</label><input type="text" id="p-poids" placeholder="ex: 2kg"></div>
-                <div class="field"><label id="l-dim">Dimensions</label><input type="text" id="p-dim" placeholder="ex: 20x20cm"></div>
+                <!-- SECTION PRODUIT -->
+                <div class="form-header" id="f-head-3">Détails du Produit</div>
+                <div class="field full"><label id="l-cont">Nom du produit / Contenu</label><input type="text" placeholder="Qu'est-ce qu'on livre ?" required></div>
+                <div class="field"><label id="l-poids">Poids (kg)</label><input type="text" placeholder="ex: 2kg"></div>
+                <div class="field"><label id="l-dim">Dimensions</label><input type="text" placeholder="ex: 30x40x10cm"></div>
 
                 <button type="submit" class="submit-btn" id="btn-valider">VALIDER LA COMMANDE</button>
             </form>
@@ -181,28 +186,18 @@
             fr: {
                 mSer: "Services", mOrd: "Order", mTra: "Tracking",
                 hT: "Livraison Premium", hD: "La logistique intelligente à Alger.",
-                mapT: "Zone d'intervention",
-                s1t: "B2B", s1d: "Documents et colis pros.",
-                s2t: "E-commerce", s2d: "Livraison boutiques en ligne.",
-                s3t: "Urgent", s3d: "Coursiers moto express.",
-                fh1: "EXPÉDITEUR", fh2: "DESTINATAIRE", fh3: "PRODUIT",
-                lNom: "Nom", lTel: "Téléphone", lAdrA: "Adresse de ramassage", lAdrB: "Adresse de livraison",
-                lPoids: "Poids", lDim: "Dimensions", btnV: "VALIDER LA COMMANDE",
-                t1: "📦 Commande Reçue", t2: "🏍️ Livreur en route", t3: "✅ Livré",
-                langBtn: "AR"
+                fh1: "Expéditeur (Sender)", fh2: "Destinataire (Recipient)", fh3: "Détails du Produit",
+                lNom: "Nom", lPre: "Prénom", lTel: "Téléphone", lEm: "Email", lAdrA: "Adresse d'expédition", lAdrB: "Adresse de livraison",
+                lCont: "Nom du produit / Contenu", lPoids: "Poids (kg)", lDim: "Dimensions", btnV: "VALIDER LA COMMANDE",
+                t1: "📦 Commande Reçue", t2: "🏍️ Livreur en route", t3: "✅ Livré", langBtn: "AR"
             },
             ar: {
                 mSer: "خدماتنا", mOrd: "طلب", mTra: "تتبع",
-                hT: "توصيل بريميوم", hD: "الخدمات اللوجستية الذكية في الجزائر العاصمة.",
-                mapT: "منطقة الخدمة",
-                s1t: "شركات", s1d: "وثائق و طرود مهنية.",
-                s2t: "تجارة إلكترونية", s2d: "توصيل المتاجر عبر الإنترنت.",
-                s3t: "عاجل", s3d: "ساعي دراجة نارية سريع.",
-                fh1: "المرسل", fh2: "المرسل إليه", fh3: "المنتج",
-                lNom: "الاسم", lTel: "الهاتف", lAdrA: "عنوان الاستلام", lAdrB: "عنوان التوصيل",
-                lPoids: "الوزن", lDim: "الأبعاد", btnV: "تأكيد الطلب",
-                t1: "📦 تم استلام الطلب", t2: "🏍️ السائق في الطريق", t3: "✅ تم التوصيل",
-                langBtn: "FR"
+                hT: "توصيل بريميوم", hD: "الخدمات اللوجستية الذكية في الجزائر.",
+                fh1: "المرسل", fh2: "المرسل إليه", fh3: "بيانات الطرد",
+                lNom: "اللقب", lPre: "الاسم", lTel: "الهاتف", lEm: "الإيميل", lAdrA: "عنوان الاستلام", lAdrB: "عنوان التوصيل",
+                lCont: "محتوى المنتج", lPoids: "الوزن (كلغ)", lDim: "الأبعاد", btnV: "تأكيد الطلب",
+                t1: "📦 تم استلام الطلب", t2: "🏍️ السائق في الطريق", t3: "✅ تم التوصيل", langBtn: "FR"
             }
         };
 
@@ -211,47 +206,33 @@
         function toggleLang() {
             currentLang = (currentLang === 'fr') ? 'ar' : 'fr';
             const lang = texts[currentLang];
-            
             document.documentElement.dir = (currentLang === 'ar') ? 'rtl' : 'ltr';
-            document.documentElement.lang = currentLang;
-
+            
             document.getElementById('m-services').innerText = lang.mSer;
             document.getElementById('m-order').innerText = lang.mOrd;
             document.getElementById('m-track').innerText = lang.mTra;
             document.getElementById('hero-title').innerText = lang.hT;
             document.getElementById('hero-desc').innerText = lang.hD;
-            document.getElementById('map-title').innerText = lang.mapT;
-            document.getElementById('s1-t').innerText = lang.s1t; document.getElementById('s1-d').innerText = lang.s1d;
-            document.getElementById('s2-t').innerText = lang.s2t; document.getElementById('s2-d').innerText = lang.s2d;
-            document.getElementById('s3-t').innerText = lang.s3t; document.getElementById('s3-d').innerText = lang.s3d;
             document.getElementById('f-head-1').innerText = lang.fh1;
             document.getElementById('f-head-2').innerText = lang.fh2;
             document.getElementById('f-head-3').innerText = lang.fh3;
             document.getElementById('l-nom1').innerText = lang.lNom; document.getElementById('l-nom2').innerText = lang.lNom;
+            document.getElementById('l-pre1').innerText = lang.lPre; document.getElementById('l-pre2').innerText = lang.lPre;
             document.getElementById('l-tel1').innerText = lang.lTel; document.getElementById('l-tel2').innerText = lang.lTel;
+            document.getElementById('l-em1').innerText = lang.lEm;
             document.getElementById('l-adr1').innerText = lang.lAdrA; document.getElementById('l-adr2').innerText = lang.lAdrB;
+            document.getElementById('l-cont').innerText = lang.lCont;
             document.getElementById('l-poids').innerText = lang.lPoids; document.getElementById('l-dim').innerText = lang.lDim;
             document.getElementById('btn-valider').innerText = lang.btnV;
-            document.getElementById('t1').innerText = lang.t1;
-            document.getElementById('t2').innerText = lang.t2;
-            document.getElementById('t3').innerText = lang.t3;
+            document.getElementById('t1').innerText = lang.t1; document.getElementById('t2').innerText = lang.t2; document.getElementById('t3').innerText = lang.t3;
             document.getElementById('lang-btn').innerText = lang.langBtn;
         }
 
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
             const btn = document.getElementById('theme-btn');
-            if(document.body.classList.contains('dark-mode')) {
-                btn.innerText = "Light Mode";
-            } else {
-                btn.innerText = "Dark Mode";
-            }
+            btn.innerText = document.body.classList.contains('dark-mode') ? "Light Mode" : "Dark Mode";
         }
-
-        document.getElementById('mainForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert(currentLang === 'fr' ? "Commande envoyée avec succès !" : "تم إرسال الطلب بنجاح !");
-        });
     </script>
 </body>
 </html>
